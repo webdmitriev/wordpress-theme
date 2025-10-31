@@ -1,0 +1,39 @@
+{
+  "name": "theme-blocks",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Custom Gutenberg blocks + frontend styles",
+  "main": "index.js",
+  "scripts": {
+    "build": "wp-scripts build development/gutenberg/index.js --output-path=build",
+    "start": "wp-scripts start development/gutenberg/index.js --output-path=build",
+    "dev": "wp-scripts start development/gutenberg/index.js --output-path=build",
+    "scss": "sass development/scss:assets/css-js --no-source-map --style=compressed",
+    "scss:watch": "sass development/scss:assets/css-js --watch --no-source-map --style=compressed",
+    "js": "node build-js.js",
+    "js:watch": "nodemon --watch development/js --ext js --exec \"npm run js\"",
+    "frontend": "npm-run-all --parallel scss:watch js:watch",
+    "images": "node compress-images.js",
+    "images:watch": "node compress-images.js",
+
+    "frontend:live": "npm-run-all --parallel scss:watch js:watch images:watch browser-sync",
+
+    "browser-sync": "node browser-sync.js"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^24.0.0",
+    "ajv": "^8.12.0",
+    "browser-sync": "^2.29.3",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "chokidar": "^4.0.3",
+    "dotenv": "^17.2.3",
+    "fs-extra": "^11.3.2",
+    "imagemin": "^9.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-svgo": "^11.0.1",
+    "nodemon": "^3.0.2",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.66.0"
+  }
+}
