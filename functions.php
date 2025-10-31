@@ -195,4 +195,4 @@ require get_template_directory() . '/admin/admin.php';
 /**
  * Global settings.
  */
-require get_template_directory() . '/inc/theme-settings.php';
+require_once get_template_directory() . '/admin/theme-settings/theme-settings.php';
