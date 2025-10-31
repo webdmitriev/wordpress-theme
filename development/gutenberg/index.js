@@ -21,5 +21,5 @@ addFilter(
 );
 
 // import blocks
-import './blocks/main';
-import './blocks/form';
+import './blocks/main/index.js';
+import './blocks/form/index.js';
