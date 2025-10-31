@@ -1,3 +1,6 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/@wordpress/scripts/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/@wordpress/scripts/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./development/gutenberg/blocks/main/editor.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 .editor-styles-wrapper.block-editor-writing-flow a {
   text-decoration: none;
 }
@@ -62,7 +65,9 @@
   outline: none;
   border: none;
   cursor: pointer;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 .editor-styles-wrapper.block-editor-writing-flow button,
 .editor-styles-wrapper.block-editor-writing-flow input {
@@ -81,6 +86,7 @@
 .theme-button {
   display: block;
   width: 100%;
+  max-width: -moz-max-content;
   max-width: max-content;
   padding: 6px 24px;
   font-family: "Montserrat", sans-serif;
@@ -161,7 +167,8 @@
   width: 100%;
   max-width: 100%;
   height: inherit;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .main .advanced-block .advanced-block-content .advanced-block-images .advanced-block-image img ~ div {
   display: flex;
@@ -238,4 +245,33 @@
 
 .help-video-modal {
   width: 980px;
-}/*# sourceMappingURL=editor.css.map */
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/@wordpress/scripts/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/@wordpress/scripts/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./development/gutenberg/blocks/form/editor.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.request {
+  margin: 20px 0;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.request.is-selected {
+  border-color: #007cba;
+  background-color: rgba(0, 124, 186, 0.05);
+}
+.request .block-title textarea {
+  padding: 4px 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 124, 186, 0.25);
+  border-radius: 8px;
+}
+
+.help-video-modal {
+  width: 980px;
+}
+
+/*# sourceMappingURL=index.css.map*/

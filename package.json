@@ -1,7 +1,6 @@
 {
   "name": "theme-blocks",
   "version": "1.0.0",
-  "type": "module",
   "description": "Custom Gutenberg blocks + frontend styles",
   "main": "index.js",
   "scripts": {
@@ -15,9 +14,7 @@
     "frontend": "npm-run-all --parallel scss:watch js:watch",
     "images": "node compress-images.js",
     "images:watch": "node compress-images.js",
-
     "frontend:live": "npm-run-all --parallel scss:watch js:watch images:watch browser-sync",
-
     "browser-sync": "node browser-sync.js"
   },
   "devDependencies": {
@@ -26,14 +23,22 @@
     "browser-sync": "^2.29.3",
     "browser-sync-webpack-plugin": "^2.3.0",
     "chokidar": "^4.0.3",
+    "css-loader": "^7.1.2",
     "dotenv": "^17.2.3",
     "fs-extra": "^11.3.2",
-    "imagemin": "^9.0.1",
-    "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-pngquant": "^10.0.0",
-    "imagemin-svgo": "^11.0.1",
+    "mini-css-extract-plugin": "^2.9.4",
     "nodemon": "^3.0.2",
     "npm-run-all": "^4.1.5",
-    "sass": "^1.66.0"
+    "sass": "^1.66.0",
+    "sass-loader": "^16.0.6",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "imagemin": "^8.0.1",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1"
   }
 }

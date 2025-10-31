@@ -1,14 +1,7 @@
-// browser-sync.js
-import browserSync from "browser-sync";
-import { fileURLToPath } from "url";
-import path from "path";
+const browserSync = require('browser-sync').create();
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const bs = browserSync.create();
-
-// Настройки для твоей локальной WP-темы
-bs.init({
-  proxy: "http://localhost:8888/github", // ← поменяй на свой локальный домен (например: http://wp.local)
+browserSync.init({
+  proxy: "http://localhost:8888/github", // ← твой локальный WP
   files: [
     "assets/css-js/*.css",
     "assets/css-js/*.js",

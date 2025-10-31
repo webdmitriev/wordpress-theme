@@ -8,7 +8,7 @@ import {
 import { Button, TextareaControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-import VideoHelpPanel from './controls/VideoHelpPanel.js';
+import VideoHelpPanel from './controls/VideoHelpPanel';
 
 const Edit = ({ attributes, setAttributes }) => {
   const {
