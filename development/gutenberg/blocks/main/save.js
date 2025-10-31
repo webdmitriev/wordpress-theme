@@ -19,7 +19,7 @@ const Save = ({ attributes }) => {
         <div className="line-wrap">
           <div className="main-content">
             <RichText.Content tagName="h1" value={title} className="h1" />
-            <RichText.Content tagName="p" value={subTitle} className="sub_title" />
+            <RichText.Content tagName="div" value={subTitle} className="sub_title" />
 
             <div className="candle candle-01"></div>
             <div className="candle candle-02"></div>

@@ -21,5 +21,8 @@ addFilter(
 );
 
 // import blocks
+// import './formats/list-format.js';
+import './formats/li-format.js';
+
 import './blocks/main/index.js';
 import './blocks/form/index.js';

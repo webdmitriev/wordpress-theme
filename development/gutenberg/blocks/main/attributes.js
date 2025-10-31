@@ -5,7 +5,7 @@ export default {
   },
   subTitle: {
     type: 'string',
-    default: 'U.A.E. made wealth advisory',
+    default: '',
   },
   imageUrl: { type: 'string', default: '' },
   imageId: { type: 'number', default: 0 },

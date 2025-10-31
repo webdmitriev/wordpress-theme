@@ -1,6 +1,7 @@
 import {
   useBlockProps,
   RichText,
+  InnerBlocks,
   InspectorControls,
   MediaUpload,
   MediaUploadCheck,
@@ -71,21 +72,46 @@ const Edit = ({ attributes, setAttributes }) => {
           <div className="advanced-block-content">
             <div className="advanced-block-text">
 
-              <TextareaControl
-                label="Title"
+              <RichText
+                tagName="h1"
                 value={title}
                 onChange={(value) => setAttributes({ title: value })}
                 placeholder={__('Add title...', 'theme')}
-                rows={3}
+                allowedFormats={['core/bold', 'core/italic', 'core/link']}
+                className="block-title"
               />
 
-              <TextareaControl
-                label="Sub title"
+              {/* <RichText
+                tagName="div"
                 value={subTitle}
                 onChange={(value) => setAttributes({ subTitle: value })}
-                placeholder={__('Add subtitle...', 'theme')}
-                rows={3}
+                placeholder={__('Введите текст. Для списка: выделите текст и нажмите кнопку списка в тулбаре...', 'theme')}
+                allowedFormats={[
+                  'core/bold',          // Жирный
+                  'core/italic',        // Курсив
+                  'core/link',          // Ссылки
+                  'core/strikethrough', // Зачеркнутый
+                  'core/text-color',    // Цвет текста
+                ]}
+                className="block-content"
+              /> */}
+
+              <RichText
+                tagName="div"
+                value={subTitle}
+                onChange={(value) => setAttributes({ subTitle: value })}
+                placeholder={__('Введите текст и создавайте списки через тулбар...', 'theme')}
+                allowedFormats={[
+                  'core/bold',
+                  'core/italic',
+                  'core/link',
+                  'core/strikethrough',
+                  'core/text-color',
+                  'theme/li-format'
+                ]}
+                className="block-content"
               />
+
             </div>
 
             <div className="advanced-block-images">

@@ -135,7 +135,9 @@
   width: 100%;
   max-width: 45%;
 }
+.main .advanced-block .advanced-block-content .advanced-block-text [role=textbox],
 .main .advanced-block .advanced-block-content .advanced-block-text textarea {
+  margin-top: 0;
   padding: 4px 12px;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
@@ -148,7 +150,7 @@
   display: block;
   max-width: 54%;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 0px;
   padding: 14px;
   background: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
