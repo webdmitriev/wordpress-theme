@@ -20,6 +20,9 @@ addFilter(
   }
 );
 
+// CEO
+import './seo-panel.js';
+
 // import blocks
 // import './formats/list-format.js';
 import './formats/li-format.js';

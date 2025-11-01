@@ -12,8 +12,9 @@
 $url = get_template_directory_uri();
 
 ?>
+<div style="display: block; width: 100%; height: 400px;"></div>
 
-		<footer class="footer">
+		<footer class="footer" style="display: none;">
 			<div class="container">
 				<div class="line-wrap">
 					<a href="<?php echo get_home_url( null, '/' ); ?>" class="logotype">logotype</a>

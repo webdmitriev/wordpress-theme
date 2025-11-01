@@ -5,15 +5,15 @@ function theme_blocks_assets() {
   wp_register_script(
     'theme-blocks',
     get_template_directory_uri() . '/build/index.js',
-    array('wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n'),
-    '1.0.0',
+    array('wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n', 'wp-edit-post', 'wp-plugins', 'wp-data', 'wp-compose'),
+    filemtime(get_template_directory() . '/build/index.js'),
     true
   );
 
-  // ✅ Добавляем локализацию (глобальные переменные JS)
+  // ✅ Локализация (если нужно)
   wp_localize_script('theme-blocks', 'themeData', array(
     'siteUrl'   => get_site_url(),
-    'uploadUrl' => get_template_directory_uri() . '/admin/instructions', // Путь к папке загрузок темы
+    'uploadUrl' => get_template_directory_uri() . '/admin/instructions',
   ));
 
   // Регистрируем стили редактора
@@ -24,7 +24,12 @@ function theme_blocks_assets() {
     '1.0.0'
   );
 
-  // Регистрируем блоки
+  // ✅ Подключаем JS панели SEO в редактор
+  add_action('enqueue_block_editor_assets', function() {
+      wp_enqueue_script('theme-blocks');
+  });
+
+  // Регистрируем пример блока
   register_block_type('theme/simple-block', array(
     'editor_script' => 'theme-blocks',
     'editor_style'  => 'theme-blocks-editor',
