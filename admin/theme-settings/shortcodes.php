@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') || exit;
+
 // Шорткоды для вывода данных
 function theme_phone_shortcode() {
   $phone = get_theme_phone();

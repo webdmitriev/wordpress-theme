@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') || exit;
+
 // Получение данных из опций
 function get_theme_phone() {
   $settings = get_option('theme_settings', []);

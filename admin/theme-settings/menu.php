@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') || exit;
+
 // Меню и подменю
 function theme_settings_menu() {
   add_menu_page(

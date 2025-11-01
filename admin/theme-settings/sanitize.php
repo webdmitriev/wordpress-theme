@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') || exit;
+
 // Регистрация и санитизация
 function theme_settings_init() {
   register_setting('theme_settings_group', 'theme_settings', 'theme_settings_sanitize');

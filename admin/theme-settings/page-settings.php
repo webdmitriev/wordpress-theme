@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') || exit;
+
 // Страница Theme Settings
 function theme_settings_page_content() {
   $theme_settings = get_option('theme_settings', []);

@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') || exit;
+
 // Стили админки
 function theme_settings_enqueue_admin_styles($hook) {
   if ($hook !== 'toplevel_page_theme-settings') return;
