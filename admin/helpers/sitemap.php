@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') || exit;
+
 // === Автоматическая генерация sitemap.xml ===
 function generate_dynamic_sitemap() {
   // Путь к файлу sitemap.xml в корне сайта

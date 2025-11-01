@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 function theme_blocks_assets() {
   // Регистрируем скрипты
   wp_register_script(

@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 function theme_register_seo_meta_fields() {
   $fields = [
     '_seo_description',

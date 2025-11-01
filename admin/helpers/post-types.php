@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 // === Регистрируем Custom Post Type "Отзывы" ===
 function register_review_post_type() {
 

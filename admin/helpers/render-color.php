@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') || exit;
+
 function output_site_color_scheme_from_acf() {
   // Получаем выбранную схему с ACF (страница опций)
   $preset_key = get_field('color_scheme', 'option') ?: 'default';

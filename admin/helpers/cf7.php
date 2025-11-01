@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 function custom_cf7_tag() {
   wpcf7_add_form_tag('current_url', 'custom_cf7_text_handler');
 }
