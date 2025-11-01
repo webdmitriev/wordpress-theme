@@ -36,6 +36,12 @@ require get_template_directory() . '/admin/helpers/sitemap.php';
 
 
 /**
+ * Advanced Auto Linking
+ */
+require_once get_template_directory() . '/admin/helpers/AdvancedAutoLinking.php';
+
+
+/**
  * Register Gutenberg blocks and assets
  */
 require_once get_template_directory() . '/admin/helpers/include-custom-gutenberg-blocks.php';
