@@ -8,7 +8,8 @@ class AdvancedAutoLinking {
     $this->settings = array(
       'max_links_per_post' => 5, // Максимум ссылок на пост
       'min_title_length' => 3,   // Минимальная длина заголовка
-      'exclude_words' => array('и', 'в', 'на', 'с', 'по', 'о', 'об') // Слова-исключения
+      'exclude_words' => array('и', 'в', 'на', 'с', 'по', 'о', 'об'), // Слова-исключения
+      'post_types' => array('post', 'page') // Типы записей для обработки
     );
 
     add_action('save_post', array($this, 'process_auto_linking'), 10, 3);
@@ -19,7 +20,7 @@ class AdvancedAutoLinking {
       return;
     }
 
-    $other_posts = $this->get_eligible_posts($post_id);
+    $other_posts = $this->get_eligible_posts($post_id, $post->post_type);
     if (empty($other_posts)) {
       return;
     }
@@ -36,7 +37,8 @@ class AdvancedAutoLinking {
       $title = $target_post->post_title;
 
       // Пропускаем короткие заголовки и слова-исключения
-      if (strlen($title) < $this->settings['min_title_length'] || in_array(mb_strtolower($title), $this->settings['exclude_words'])) {
+      if (strlen($title) < $this->settings['min_title_length'] || 
+          in_array(mb_strtolower($title), $this->settings['exclude_words'])) {
         continue;
       }
 
@@ -51,7 +53,12 @@ class AdvancedAutoLinking {
   }
 
   private function should_process($post_id, $post) {
-    if ($post->post_status !== 'publish' || $post->post_type !== 'post') {
+    // Проверяем тип записи
+    if (!in_array($post->post_type, $this->settings['post_types'])) {
+      return false;
+    }
+
+    if ($post->post_status !== 'publish') {
       return false;
     }
 
@@ -66,9 +73,9 @@ class AdvancedAutoLinking {
     return true;
   }
 
-  private function get_eligible_posts($exclude_post_id) {
+  private function get_eligible_posts($exclude_post_id, $post_type = 'post') {
     return get_posts(array(
-      'post_type' => 'post',
+      'post_type' => $this->settings['post_types'], // Ищем во всех разрешенных типах
       'post_status' => 'publish',
       'exclude' => array($exclude_post_id),
       'numberposts' => 50, // Ограничиваем для производительности
