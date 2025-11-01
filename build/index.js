@@ -559,12 +559,13 @@ const Edit = ({
     className: "item-content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "item-text-section"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextareaControl, {
-    label: "Text",
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    tagName: "div",
     value: item.content,
     onChange: value => updateItem(index, 'content', value),
-    rows: 8,
-    placeholder: "Add text..."
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Add text...', 'theme'),
+    allowedFormats: ['core/bold', 'core/italic', 'core/link', 'core/strikethrough', 'core/text-color'],
+    className: "block-content"
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "repeater-footer"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
@@ -671,18 +672,6 @@ const Save = ({
     tagName: "div",
     value: subTitle,
     className: "sub_title"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "candle candle-01"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "candle candle-02"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "candle candle-03"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "candle candle-04"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "candle candle-05"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "candle candle-06"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "main-images"
   }, imageUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -693,98 +682,6 @@ const Save = ({
     className: "image-01",
     loading: "lazy",
     decoding: "async"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "images-container"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "rhombus-top"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "rhombus-bottom"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "square-bg-top"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "square-bg-bottom"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "square square-01"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "square square-02"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "square square-03"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "square square-04"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "square square-05"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "square square-06"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    className: "svg-line",
-    width: "604",
-    height: "559",
-    viewBox: "0 0 604 559",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    id: "graph-line",
-    d: "M-326.5 571.5L-271.5 524L-215 508.5L-163 559.5L-73.5 490.5L-53 497L-7 494L61 413.5L151 449.5L235 364L261 366L332.5 273L361.5 314L396 294L426.5 239L496.5 194L546.5 62L665.5 14.5L730 64.5L753 117.5L777.5 127L816.5 195L840.5 169.5L869.5 180.5L903.5 185.5L925 202.5L961.5 160.5L1020 49L1063.5 117.5L1095 134.5L1136.5 78.5L1158 102L1184 90.5L1248 3.5L1279.5 49L1313.5 28L1375 -20L1400 1L1450.5 -12.5L1486 -31.5L1507 -22.5H1545L1585.5 -72L1593 -78",
-    stroke: "#0F5EAF",
-    "stroke-width": "9"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-01"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-02"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-03"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-04"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-05"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-06"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-07"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-08"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-09"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-10"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-11"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-12"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-13"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-14"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-15"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-16"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-17"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-18"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-19"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-20"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-21"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-22"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-23"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-24"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cup cup-25"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "ogive ogive-01"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "ogive ogive-02"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "ogive ogive-03"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "ogive ogive-04"
   })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "line-items"
   }, items.map((item, index) => {
@@ -833,8 +730,8 @@ const {
 } = wp.element;
 registerFormatType('theme/li-format', {
   title: 'Custom List Item',
-  tagName: 'p',
-  className: 'li',
+  tagName: 'span',
+  className: 'custom-list',
   edit({
     isActive,
     value,

@@ -4,8 +4,8 @@ const { createElement } = wp.element;
 
 registerFormatType('theme/li-format', {
   title: 'Custom List Item',
-  tagName: 'p',
-  className: 'li',
+  tagName: 'span',
+  className: 'custom-list',
   edit({ isActive, value, onChange }) {
     return createElement(
       RichTextToolbarButton,

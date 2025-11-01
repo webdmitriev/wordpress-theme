@@ -172,12 +172,19 @@ const Edit = ({ attributes, setAttributes }) => {
 
                   <div className="item-content">
                     <div className="item-text-section">
-                      <TextareaControl
-                        label="Text"
+                      <RichText
+                        tagName="div"
                         value={item.content}
                         onChange={(value) => updateItem(index, 'content', value)}
-                        rows={8}
-                        placeholder="Add text..."
+                        placeholder={__('Add text...', 'theme')}
+                        allowedFormats={[
+                          'core/bold',
+                          'core/italic',
+                          'core/link',
+                          'core/strikethrough',
+                          'core/text-color',
+                        ]}
+                        className="block-content"
                       />
                     </div>
                   </div>
