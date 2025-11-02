@@ -27,5 +27,6 @@ import './seo-panel.js';
 // import './formats/list-format.js';
 import './formats/li-format.js';
 
-import './blocks/main/index.js';
-import './blocks/form/index.js';
+import './blocks/mgu-main/index.js';
+// import './blocks/main/index.js';
+// import './blocks/form/index.js';

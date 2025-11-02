@@ -34,7 +34,7 @@ function theme_blocks_assets() {
   // Регистрируем пример блока
   register_block_type('theme/simple-block', array(
     'editor_script' => 'theme-blocks',
-    'editor_style'  => 'theme-blocks-editor',
+    'editor_style'  => 'theme-blocks-editor'
   ));
 }
 add_action('init', 'theme_blocks_assets');

@@ -1,5 +1,5 @@
 @use "./data/reset";
-// @import "stylesheet.css";
+@use "../fonts/stylesheet.css";
 
 @use "./data/function";
 
@@ -12,14 +12,15 @@
 @use "./data/wpcf7";
 
 // components
-// @import "components/block-title";
-// @import "components/h1";
-// @import "components/h2";
-// @import "components/text";
-// @import "components/sect-title";
-// @import "components/btn";
-// @import "components/link";
-// @import "components/breadcrumbs";
+// @use "components/block-title";
+@use "./components/h1";
+// @use "components/h2";
+@use "./components/sub_title";
+@use "./components/descr";
+// @use "components/sect-title";
+// @use "components/btn";
+// @use "components/link";
+// @use "components/breadcrumbs";
 
 // MGU blocks
 @use "./mgu-blocks/mgu-main.scss";

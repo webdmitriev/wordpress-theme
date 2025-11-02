@@ -18,9 +18,9 @@ function get_site_color_scheme() {
         'orange' => [
             '--black-color' => '#171717',
             '--gray-color' => '#808080',
-            '--accent-color' => '#FF6B35',
+            '--accent-color' => '#fe6d35',
             '--bg-color' => '#FFF5F0',
-            '--gradient-color' => 'linear-gradient(45deg, #FF8C42 0%, #FF6B35 100%)',
+            '--gradient-color' => 'linear-gradient(45deg, #FF8C42 0%, #fe6d35 100%)',
         ],
         'gray' => [
             '--black-color' => '#171717',
