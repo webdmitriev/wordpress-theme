@@ -5,9 +5,8 @@ import {
   MediaUpload,
   MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { Button, PanelBody, PanelRow } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useSelect } from '@wordpress/data';
 
 import { useAutoLinking } from '../../utils/useAutoLinking';
 import AutoLinkingPanel from '../../utils/AutoLinkingPanel';
