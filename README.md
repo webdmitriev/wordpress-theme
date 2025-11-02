@@ -7,7 +7,9 @@
 - Auto sitemap.xml
 - Typograph for blocks
 - Auto Linking
+- Changing color (:root {})
 
+---
 
 ### Frontend optimize
 
