@@ -8,22 +8,19 @@ const VideoHelpPanel = () => {
 
   return (
     <>
-      <PanelBody title={__('Instructions', 'theme')} initialOpen={true}>
-        <p>
-          {__('Video instructions.', 'theme')}
-        </p>
+      <PanelBody title={__('Инструкции', 'theme')} initialOpen={false}>
         <Button
           variant="primary"
           onClick={() => setIsVideoOpen(true)}
           icon="video-alt3"
         >
-          {__('Play', 'theme')}
+          {__('Смотреть видео', 'theme')}
         </Button>
       </PanelBody>
 
       {isVideoOpen && (
         <Modal
-          title={__('Video instruction', 'theme')}
+          title={__('Видео инструкция к блоку', 'theme')}
           onRequestClose={() => setIsVideoOpen(false)}
           className="help-video-modal"
         >

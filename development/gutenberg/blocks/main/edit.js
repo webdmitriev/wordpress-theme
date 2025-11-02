@@ -10,6 +10,7 @@ import { Button, TextareaControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 import VideoHelpPanel from './controls/VideoHelpPanel';
+import ContentPanel from './controls/ContentPanel';
 
 const Edit = ({ attributes, setAttributes }) => {
   const {
@@ -63,6 +64,7 @@ const Edit = ({ attributes, setAttributes }) => {
     <>
       <InspectorControls>
         <VideoHelpPanel />
+        <ContentPanel attributes={attributes} setAttributes={setAttributes} />
       </InspectorControls>
 
       <div {...blockProps}>
