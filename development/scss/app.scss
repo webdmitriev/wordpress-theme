@@ -1,4 +1,50 @@
-.webdmitriev {
-  display: block;
-  width: 100%;
+@use "./data/reset";
+// @import "stylesheet.css";
+
+@use "./data/function";
+
+@use "./data/global";
+
+// data
+@use "./data/header";
+@use "./data/footer";
+@use "./data/popup";
+@use "./data/wpcf7";
+
+// components
+// @import "components/block-title";
+// @import "components/h1";
+// @import "components/h2";
+// @import "components/text";
+// @import "components/sect-title";
+// @import "components/btn";
+// @import "components/link";
+// @import "components/breadcrumbs";
+
+// MGU blocks
+@use "./mgu-blocks/mgu-main.scss";
+
+// animations
+@use "./data/animations";
+@use "./data/not-found";
+@use "./data/thank-you";
+
+// hover
+@use "./data/hover";
+
+@media (max-width: 1680px) {
+}
+@media (max-width: 1366px) {
+}
+@media (max-width: 1199px) {
+}
+@media (max-width: 991px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 576px) {
+}
+@media (max-width: 460px) {
+}
+@media (max-width: 400px) {
 }

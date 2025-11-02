@@ -27,7 +27,7 @@ $url = get_template_directory_uri();
 
 	<div id="app">
 
-		<header class="header">
+		<header class="header" style="display: none;">
 			<div class="container">
 				<div class="line-wrap">
 					<a href="<?php echo get_home_url( null, '/' ); ?>" class="logotype">logotype</a>
