@@ -484,8 +484,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./controls/VideoHelpPanel */ "./development/gutenberg/blocks/main/controls/VideoHelpPanel.js");
-/* harmony import */ var _controls_ContentPanel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./controls/ContentPanel */ "./development/gutenberg/blocks/main/controls/ContentPanel.js");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_useAutoLinking__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/useAutoLinking */ "./development/gutenberg/utils/useAutoLinking.js");
+/* harmony import */ var _utils_AutoLinkingPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/AutoLinkingPanel */ "./development/gutenberg/utils/AutoLinkingPanel.js");
+/* harmony import */ var _controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./controls/VideoHelpPanel */ "./development/gutenberg/blocks/main/controls/VideoHelpPanel.js");
+/* harmony import */ var _controls_ContentPanel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./controls/ContentPanel */ "./development/gutenberg/blocks/main/controls/ContentPanel.js");
+
+
+
 
 
 
@@ -506,6 +513,17 @@ const Edit = ({
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
     className: 'main'
   });
+
+  // Используем хук авто-линкинга
+  const {
+    autoLinkContent,
+    postsCount
+  } = (0,_utils_useAutoLinking__WEBPACK_IMPORTED_MODULE_5__.useAutoLinking)();
+
+  // Обработчик авто-линкинга
+  const handleAutoLink = () => {
+    autoLinkContent(attributes, setAttributes, ['title', 'subTitle', 'items']);
+  };
 
   // Handlers
   const onSelectImage = media => {
@@ -550,9 +568,13 @@ const Edit = ({
       items: newItems
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_ContentPanel__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_7__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_ContentPanel__WEBPACK_IMPORTED_MODULE_8__["default"], {
     attributes: attributes,
     setAttributes: setAttributes
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_AutoLinkingPanel__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    onAutoLink: handleAutoLink,
+    postsCount: postsCount,
+    disabled: postsCount === 0
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1014,6 +1036,274 @@ const SeoTab = () => {
   render: SeoTab,
   icon: 'admin-site'
 });
+
+/***/ }),
+
+/***/ "./development/gutenberg/utils/AutoLinkingPanel.js":
+/*!*********************************************************!*\
+  !*** ./development/gutenberg/utils/AutoLinkingPanel.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+/**
+ * Компонент панели авто-линкинга для InspectorControls
+ * @param {Object} props - Свойства компонента
+ * @param {Function} props.onAutoLink - Функция вызываемая при клике
+ * @param {number} props.postsCount - Количество доступных постов
+ * @param {boolean} props.disabled - Отключена ли кнопка
+ */
+const AutoLinkingPanel = ({
+  onAutoLink,
+  postsCount,
+  disabled = false
+}) => {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Auto Linking', 'theme'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      width: '100%'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: {
+      fontSize: '12px',
+      marginBottom: '12px'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automatically link post titles found in content to their respective posts.', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    variant: "secondary",
+    onClick: onAutoLink,
+    disabled: disabled,
+    style: {
+      width: '100%',
+      justifyContent: 'center'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('🔗 Auto Link Posts', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: {
+      fontSize: '11px',
+      marginTop: '8px',
+      color: '#757575'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Available posts:', 'theme'), " ", postsCount))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AutoLinkingPanel);
+
+/***/ }),
+
+/***/ "./development/gutenberg/utils/useAutoLinking.js":
+/*!*******************************************************!*\
+  !*** ./development/gutenberg/utils/useAutoLinking.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useAutoLinking: () => (/* binding */ useAutoLinking)
+/* harmony export */ });
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+/**
+ * Хук для автоматического связывания текста с постами
+ * @returns {Object} Объект с функциями и данными для авто-линкинга
+ */
+const useAutoLinking = () => {
+  // Получаем все посты
+  const allPosts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.useSelect)(select => {
+    return select('core').getEntityRecords('postType', 'post', {
+      per_page: -1,
+      status: 'publish'
+    });
+  }, []);
+
+  /**
+   * Функция для замены текста на ссылки
+   * @param {string} text - Исходный текст
+   * @returns {string} - Текст с ссылками
+   */
+  const replaceTextWithLinks = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)(text => {
+    if (!text || !allPosts || allPosts.length === 0) return text;
+    let updatedText = text;
+
+    // Сортируем посты по длине заголовка (сначала длинные)
+    const sortedPosts = [...allPosts].sort((a, b) => b.title.rendered.length - a.title.rendered.length);
+    sortedPosts.forEach(post => {
+      const postTitle = post.title.rendered.replace(/&nbsp;/g, ' ').trim();
+      if (postTitle.length < 3) return; // Пропускаем короткие заголовки
+
+      // Экранируем специальные символы для regex
+      const escapedTitle = postTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+      // Улучшенное регулярное выражение для кириллицы и любых символов
+      // Ищем границы слов для любых символов (включая кириллицу)
+      const regex = new RegExp(`(^|[^\\p{L}\\d])${escapedTitle}(?![\\p{L}\\d])`, 'gui' // g - global, u - unicode, i - case insensitive
+      );
+
+      // Альтернативный вариант если не поддерживается unicode
+      // const regex = new RegExp(
+      //   `(^|[^a-zA-Zа-яА-ЯёЁ0-9])${escapedTitle}(?![a-zA-Zа-яА-ЯёЁ0-9])`, 
+      //   'gi'
+      // );
+
+      // Проверяем, не находится ли уже в ссылке
+      const linkRegex = new RegExp(`<a[^>]*>${escapedTitle}<\\/a>`, 'gi');
+      if (!linkRegex.test(updatedText)) {
+        const link = `<a href="${post.link}" class="auto-linked" data-post-id="${post.id}">${postTitle}</a>`;
+        updatedText = updatedText.replace(regex, `$1${link}`);
+      }
+    });
+    return updatedText;
+  }, [allPosts]);
+
+  /**
+   * Альтернативная функция для сложных случаев с кириллицей
+   */
+  const replaceTextWithLinksAdvanced = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)(text => {
+    if (!text || !allPosts || allPosts.length === 0) return text;
+    let updatedText = text;
+    const sortedPosts = [...allPosts].sort((a, b) => b.title.rendered.length - a.title.rendered.length);
+    sortedPosts.forEach(post => {
+      const postTitle = post.title.rendered.replace(/&nbsp;/g, ' ').trim();
+      if (postTitle.length < 3) return;
+
+      // Простая замена без сложных границ - работает для кириллицы
+      const regex = new RegExp(`\\b${postTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+
+      // Более надежная проверка на существующие ссылки
+      const existingLinkPattern = `<a[^>]*>.*?${postTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}.*?<\\/a>`;
+      const linkRegex = new RegExp(existingLinkPattern, 'gi');
+      if (!linkRegex.test(updatedText)) {
+        const link = `<a href="${post.link}" class="auto-linked" data-post-id="${post.id}">${postTitle}</a>`;
+        updatedText = updatedText.replace(regex, link);
+      }
+    });
+    return updatedText;
+  }, [allPosts]);
+
+  /**
+   * Улучшенная функция с ручной проверкой границ для кириллицы
+   */
+  const replaceTextWithLinksUnicode = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)(text => {
+    if (!text || !allPosts || allPosts.length === 0) return text;
+    let updatedText = text;
+    const sortedPosts = [...allPosts].sort((a, b) => b.title.rendered.length - a.title.rendered.length);
+
+    // Функция для проверки границ слова
+    const isWordBoundary = char => {
+      if (!char) return true; // Начало или конец строки
+      const code = char.charCodeAt(0);
+      // Проверяем на буквы (латиница, кириллица), цифры
+      return !(code >= 65 && code <= 90 ||
+      // A-Z
+      code >= 97 && code <= 122 ||
+      // a-z
+      code >= 1040 && code <= 1103 ||
+      // Кириллица
+      code === 1105 || code === 1025 ||
+      // ёЁ
+      code >= 48 && code <= 57 // 0-9
+      );
+    };
+    sortedPosts.forEach(post => {
+      const postTitle = post.title.rendered.replace(/&nbsp;/g, ' ').trim();
+      if (postTitle.length < 3) return;
+
+      // Экранируем для regex
+      const escapedTitle = postTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(escapedTitle, 'gi');
+
+      // Проверяем существующие ссылки
+      const linkRegex = new RegExp(`<a[^>]*>${escapedTitle}<\\/a>`, 'gi');
+      if (linkRegex.test(updatedText)) return;
+
+      // Заменяем с ручной проверкой границ
+      updatedText = updatedText.replace(regex, (match, offset, original) => {
+        // Проверяем границы перед и после совпадения
+        const before = original[offset - 1];
+        const after = original[offset + match.length];
+        if (isWordBoundary(before) && isWordBoundary(after)) {
+          return `<a href="${post.link}" class="auto-linked" data-post-id="${post.id}">${match}</a>`;
+        }
+        return match; // Оставляем без изменений если не границы слова
+      });
+    });
+    return updatedText;
+  }, [allPosts]);
+
+  /**
+   * Основная функция авто-линкинга
+   * @param {Object} attributes - Атрибуты блока
+   * @param {Function} setAttributes - Функция установки атрибутов
+   * @param {Array} fields - Массив полей для обработки
+   */
+  const autoLinkContent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useCallback)((attributes, setAttributes, fields = ['title', 'subTitle', 'items']) => {
+    if (!allPosts || allPosts.length === 0) return;
+    const updates = {};
+
+    // Обрабатываем простые текстовые поля
+    const textFields = fields.filter(field => field !== 'items');
+    textFields.forEach(field => {
+      if (attributes[field]) {
+        // Используем улучшенную функцию для кириллицы
+        const updatedText = replaceTextWithLinksUnicode(attributes[field]);
+        if (updatedText !== attributes[field]) {
+          updates[field] = updatedText;
+        }
+      }
+    });
+
+    // Обрабатываем элементы (items)
+    if (fields.includes('items') && attributes.items && attributes.items.length > 0) {
+      const updatedItems = attributes.items.map(item => {
+        if (item.content) {
+          const updatedContent = replaceTextWithLinksUnicode(item.content);
+          return {
+            ...item,
+            content: updatedContent !== item.content ? updatedContent : item.content
+          };
+        }
+        return item;
+      });
+
+      // Проверяем, есть ли изменения
+      const hasChanges = updatedItems.some((item, index) => item.content !== attributes.items[index].content);
+      if (hasChanges) {
+        updates.items = updatedItems;
+      }
+    }
+
+    // Применяем обновления, если они есть
+    if (Object.keys(updates).length > 0) {
+      setAttributes(updates);
+    }
+  }, [allPosts, replaceTextWithLinksUnicode]);
+  return {
+    allPosts,
+    autoLinkContent,
+    replaceTextWithLinks: replaceTextWithLinksUnicode,
+    // Экспортируем улучшенную версию
+    postsCount: allPosts ? allPosts.length : 0
+  };
+};
 
 /***/ }),
 

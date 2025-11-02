@@ -5,9 +5,12 @@ import {
   MediaUpload,
   MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { Button } from '@wordpress/components';
+import { Button, PanelBody, PanelRow } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { useSelect } from '@wordpress/data';
 
+import { useAutoLinking } from '../../utils/useAutoLinking';
+import AutoLinkingPanel from '../../utils/AutoLinkingPanel';
 import VideoHelpPanel from './controls/VideoHelpPanel';
 import ContentPanel from './controls/ContentPanel';
 
@@ -23,6 +26,14 @@ const Edit = ({ attributes, setAttributes }) => {
   const blockProps = useBlockProps({
     className: 'main'
   });
+
+  // Используем хук авто-линкинга
+  const { autoLinkContent, postsCount } = useAutoLinking();
+
+  // Обработчик авто-линкинга
+  const handleAutoLink = () => {
+    autoLinkContent(attributes, setAttributes, ['title', 'subTitle', 'items']);
+  };
 
   // Handlers
   const onSelectImage = (media) => {
@@ -64,6 +75,13 @@ const Edit = ({ attributes, setAttributes }) => {
       <InspectorControls>
         <VideoHelpPanel />
         <ContentPanel attributes={attributes} setAttributes={setAttributes} />
+
+        {/* Добавляем панель авто-линкинга */}
+        <AutoLinkingPanel
+          onAutoLink={handleAutoLink}
+          postsCount={postsCount}
+          disabled={postsCount === 0}
+        />
       </InspectorControls>
 
       <div {...blockProps}>
