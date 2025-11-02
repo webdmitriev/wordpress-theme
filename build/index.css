@@ -123,6 +123,9 @@
   border-radius: 8px;
   box-sizing: border-box;
 }
+.main .advanced-block .block-info > .components-base-control {
+  margin: 0;
+}
 .main .advanced-block .advanced-block-content {
   display: flex;
   flex-wrap: wrap;

@@ -1,3 +1,4 @@
+import { useState } from '@wordpress/element';
 import {
   useBlockProps,
   RichText,
@@ -5,7 +6,7 @@ import {
   MediaUpload,
   MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { Button } from '@wordpress/components';
+import { Button, ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 import { useAutoLinking } from '../../utils/useAutoLinking';
@@ -21,6 +22,12 @@ const Edit = ({ attributes, setAttributes }) => {
     imageId,
     items
   } = attributes;
+
+  const [isPreview, setIsPreview] = useState(true);
+
+  const togglePreview = () => {
+    setIsPreview(!isPreview);
+  };
 
   const blockProps = useBlockProps({
     className: 'main'
@@ -85,127 +92,146 @@ const Edit = ({ attributes, setAttributes }) => {
 
       <div {...blockProps}>
         <div className="advanced-block">
-          <div className="block-info">🎨 Main block</div>
+          <div className="block-info" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
+            <span className="block-info-title">🎨 Главный блок</span>
+            <ToggleControl
+              label={isPreview ? __('Редактирование ✍️', 'theme') : __('Предпросмотр ☺️', 'theme')}
+              checked={isPreview}
+              onChange={togglePreview}
+            />
+          </div>
 
-          <div className="advanced-block-content">
-            <div className="advanced-block-text">
+          {isPreview && (
+            <div className="advanced-block-content">
+              <div className="advanced-block-text">
 
-              <RichText
-                tagName="h1"
-                value={title}
-                onChange={(value) => setAttributes({ title: value })}
-                placeholder={__('Add title...', 'theme')}
-                allowedFormats={['core/bold', 'core/italic', 'core/link']}
-                className="block-title"
-              />
+                <RichText
+                  tagName="h1"
+                  value={title}
+                  onChange={(value) => setAttributes({ title: value })}
+                  placeholder={__('Add title...', 'theme')}
+                  allowedFormats={['core/bold', 'core/italic', 'core/link']}
+                  className="block-title"
+                />
 
-              <RichText
-                tagName="div"
-                value={subTitle}
-                onChange={(value) => setAttributes({ subTitle: value })}
-                placeholder={__('Введите текст и создавайте списки через тулбар...', 'theme')}
-                allowedFormats={[
-                  'core/bold',
-                  'core/italic',
-                  'core/link',
-                  'core/strikethrough',
-                  'core/text-color',
-                  'theme/li-format'
-                ]}
-                className="block-content"
-              />
+                <RichText
+                  tagName="div"
+                  value={subTitle}
+                  onChange={(value) => setAttributes({ subTitle: value })}
+                  placeholder={__('Введите текст и создавайте списки через тулбар...', 'theme')}
+                  allowedFormats={[
+                    'core/bold',
+                    'core/italic',
+                    'core/link',
+                    'core/strikethrough',
+                    'core/text-color',
+                    'theme/li-format'
+                  ]}
+                  className="block-content"
+                />
 
-            </div>
+              </div>
 
-            <div className="advanced-block-images">
-              <MediaUploadCheck>
-                <MediaUpload
-                  onSelect={onSelectImage}
-                  allowedTypes={['image']}
-                  value={imageId}
-                  render={({ open }) => (
-                    <div className="advanced-block-image">
-                      {imageUrl ? (
-                        <>
-                          <img
-                            src={imageUrl}
-                            className="advanced-image-preview"
-                            alt=""
-                            style={{ borderRadius: '8px' }}
-                          />
-                          <div style={{ display: 'flex', gap: '6px', marginTop: '4px' }}>
-                            <Button onClick={open} variant="secondary" size="small">
-                              ✏️ {__('Change', 'theme')}
-                            </Button>
-                            <Button
-                              onClick={onRemoveImage}
-                              variant="tertiary"
-                              size="small"
-                              isDestructive
-                            >
-                              🗑 {__('Delete', 'theme')}
-                            </Button>
-                          </div>
-                        </>
-                      ) : (
-                        <Button onClick={open} variant="primary">
-                          📷 {__('Add image', 'theme')}
-                        </Button>
+              <div className="advanced-block-images">
+                <MediaUploadCheck>
+                  <MediaUpload
+                    onSelect={onSelectImage}
+                    allowedTypes={['image']}
+                    value={imageId}
+                    render={({ open }) => (
+                      <div className="advanced-block-image">
+                        {imageUrl ? (
+                          <>
+                            <img
+                              src={imageUrl}
+                              className="advanced-image-preview"
+                              alt=""
+                              style={{ borderRadius: '8px' }}
+                            />
+                            <div style={{ display: 'flex', gap: '6px', marginTop: '4px' }}>
+                              <Button onClick={open} variant="secondary" size="small">
+                                ✏️ {__('Change', 'theme')}
+                              </Button>
+                              <Button
+                                onClick={onRemoveImage}
+                                variant="tertiary"
+                                size="small"
+                                isDestructive
+                              >
+                                🗑 {__('Delete', 'theme')}
+                              </Button>
+                            </div>
+                          </>
+                        ) : (
+                          <Button onClick={open} variant="primary">
+                            📷 {__('Add image', 'theme')}
+                          </Button>
+                        )}
+                      </div>
+                    )}
+                  />
+                </MediaUploadCheck>
+              </div>
+
+              <div className="advanced-block-items">
+                {items.map((item, index) => (
+                  <div key={index} className="repeater-item">
+                    <div className="item-header">
+                      {items.length > 1 && (
+                        <Button
+                          onClick={() => removeItem(index)}
+                          variant="tertiary"
+                          icon="trash"
+                          isDestructive
+                          className="remove-item-btn"
+                        />
                       )}
                     </div>
-                  )}
-                />
-              </MediaUploadCheck>
-            </div>
 
-            <div className="advanced-block-items">
-              {items.map((item, index) => (
-                <div key={index} className="repeater-item">
-                  <div className="item-header">
-                    {items.length > 1 && (
-                      <Button
-                        onClick={() => removeItem(index)}
-                        variant="tertiary"
-                        icon="trash"
-                        isDestructive
-                        className="remove-item-btn"
-                      />
-                    )}
-                  </div>
-
-                  <div className="item-content">
-                    <div className="item-text-section">
-                      <RichText
-                        tagName="div"
-                        value={item.content}
-                        onChange={(value) => updateItem(index, 'content', value)}
-                        placeholder={__('Add text...', 'theme')}
-                        allowedFormats={[
-                          'core/bold',
-                          'core/italic',
-                          'core/link',
-                          'core/strikethrough',
-                          'core/text-color',
-                        ]}
-                        className="block-content"
-                      />
+                    <div className="item-content">
+                      <div className="item-text-section">
+                        <RichText
+                          tagName="div"
+                          value={item.content}
+                          onChange={(value) => updateItem(index, 'content', value)}
+                          placeholder={__('Add text...', 'theme')}
+                          allowedFormats={[
+                            'core/bold',
+                            'core/italic',
+                            'core/link',
+                            'core/strikethrough',
+                            'core/text-color',
+                          ]}
+                          className="block-content"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
 
-              {/* Кнопка добавления в конце */}
-              <div className="repeater-footer">
-                <Button
-                  onClick={addItem}
-                  variant="primary"
-                  icon="plus"
-                >
-                  {__('Add element', 'theme')}
-                </Button>
+                {/* Кнопка добавления в конце */}
+                <div className="repeater-footer">
+                  <Button
+                    onClick={addItem}
+                    variant="primary"
+                    icon="plus"
+                  >
+                    {__('Add element', 'theme')}
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
+          )}
+
+          {!isPreview && (
+            <div className="advanced-block-preview">
+              <div className="preview-content">
+                <RichText.Content tagName="h1" value={title} className="h1" />
+                <RichText.Content tagName="p" value={subTitle} className="descr" />
+              </div>
+            </div>
+          )}
+
         </div>
       </div>
     </>
