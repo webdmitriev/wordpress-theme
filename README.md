@@ -25,3 +25,10 @@
 | `enqueue.php`             | стили и скрипты админки                        |
 | `helpers.php`             | функции получения опций                        |
 | `shortcodes.php`          | все шорткоды                                   |
+
+
+### What you can
+
+- Auto sitemap.xml
+- Typograph for blocks
+- Auto Linking
