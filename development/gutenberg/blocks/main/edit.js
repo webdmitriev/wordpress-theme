@@ -1,12 +1,11 @@
 import {
   useBlockProps,
   RichText,
-  InnerBlocks,
   InspectorControls,
   MediaUpload,
   MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { Button, TextareaControl } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 import VideoHelpPanel from './controls/VideoHelpPanel';
@@ -82,21 +81,6 @@ const Edit = ({ attributes, setAttributes }) => {
                 allowedFormats={['core/bold', 'core/italic', 'core/link']}
                 className="block-title"
               />
-
-              {/* <RichText
-                tagName="div"
-                value={subTitle}
-                onChange={(value) => setAttributes({ subTitle: value })}
-                placeholder={__('Введите текст. Для списка: выделите текст и нажмите кнопку списка в тулбаре...', 'theme')}
-                allowedFormats={[
-                  'core/bold',          // Жирный
-                  'core/italic',        // Курсив
-                  'core/link',          // Ссылки
-                  'core/strikethrough', // Зачеркнутый
-                  'core/text-color',    // Цвет текста
-                ]}
-                className="block-content"
-              /> */}
 
               <RichText
                 tagName="div"
