@@ -20,12 +20,6 @@ require_once get_template_directory() . '/admin/helpers/cf7.php';
 
 
 /**
- * Render color
- */
-// require get_template_directory() . '/admin/helpers/render-color.php';
-
-
-/**
  * SEO
  */
 require get_template_directory() . '/admin/helpers/seo-meta.php';
