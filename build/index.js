@@ -15,11 +15,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   title: {
     type: 'string',
-    default: ' '
+    default: ''
   },
   subTitleOne: {
     type: 'string',
-    default: ' '
+    default: ''
   },
   divider: {
     type: 'bool',
@@ -27,11 +27,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   subTitleTwo: {
     type: 'string',
-    default: ' '
+    default: ''
   },
   descr: {
     type: 'string',
-    default: ' '
+    default: ''
   },
   imageUrl: {
     type: 'string',

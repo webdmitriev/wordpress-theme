@@ -1,11 +1,11 @@
 export default {
   title: {
     type: 'string',
-    default: ' ',
+    default: '',
   },
   subTitleOne: {
     type: 'string',
-    default: ' ',
+    default: '',
   },
   divider: {
     type: 'bool',
@@ -13,11 +13,11 @@ export default {
   },
   subTitleTwo: {
     type: 'string',
-    default: ' ',
+    default: '',
   },
   descr: {
     type: 'string',
-    default: ' ',
+    default: '',
   },
   imageUrl: { type: 'string', default: '' },
   imageId: { type: 'number', default: 0 },
