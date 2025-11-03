@@ -1,4 +1,5 @@
 import { PanelBody, ColorPicker, Button, Popover, Flex, FlexItem } from '@wordpress/components';
+import { PanelColorSettings } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 
@@ -79,18 +80,28 @@ const ColorPanel = ({ attributes, setAttributes }) => {
   return (
     <PanelBody title={__('Цвета', 'theme')} initialOpen={false}>
       <Flex direction="column" gap="12px">
-        <ColorControl
-          label={__('Подчеркивание заголовка', 'theme')}
-          colorValue={underlineColor}
-          colorKey="underlineColor"
-          defaultLabel={__('Цвет подчеркивания', 'theme')}
+        <PanelColorSettings
+          title={__('Подчеркивание заголовка', 'theme')}
+          colorSettings={[
+            {
+              value: underlineColor,
+              onChange: (color) => setAttributes({ underlineColor: color }),
+              label: __('Background Color', 'theme'),
+              colors: colors,
+            },
+          ]}
         />
 
-        <ColorControl
-          label={__('Фон', 'theme')}
-          colorValue={bgc}
-          colorKey="bgc"
-          defaultLabel={__('Цвет фона', 'theme')}
+        <PanelColorSettings
+          title={__('Фон', 'theme')}
+          colorSettings={[
+            {
+              value: bgc,
+              onChange: (color) => setAttributes({ bgc: color }),
+              label: __('Background Color', 'theme'),
+              colors: colors,
+            },
+          ]}
         />
       </Flex>
     </PanelBody>

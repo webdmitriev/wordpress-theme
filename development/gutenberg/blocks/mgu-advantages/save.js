@@ -17,7 +17,7 @@ const Save = ({ attributes }) => {
             value={title}
             className="repeater-title"
           />
-          <div className="h2-underline" style={{ backgroundColor: underlineColor }}></div>
+          <div className="h2-underline" style={{ width: '100%', height: '8px', backgroundColor: underlineColor }}></div>
         </div>
 
         <div className="repeater-items">

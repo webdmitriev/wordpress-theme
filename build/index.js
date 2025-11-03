@@ -41,8 +41,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _gutenberg_utils_default_colors_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../gutenberg/utils/default-colors.js */ "./development/gutenberg/utils/default-colors.js");
 
 
 
@@ -88,7 +87,7 @@ const withBackgroundColorControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODUL
     const blockStyle = backgroundColor ? {
       backgroundColor
     } : {};
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', 'theme'),
       colorSettings: [{
         value: backgroundColor,
@@ -96,25 +95,7 @@ const withBackgroundColorControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODUL
           backgroundColor: color
         }),
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', 'theme'),
-        colors: [{
-          name: 'Blue',
-          color: '#26A3D1'
-        }, {
-          name: 'Blue Dark',
-          color: '#003760'
-        }, {
-          name: 'Orange',
-          color: '#ff762f'
-        }, {
-          name: 'Green',
-          color: '#01A781'
-        }, {
-          name: 'Green Dark',
-          color: '#002b2a'
-        }, {
-          name: 'Red Dark',
-          color: '#6D0916'
-        }]
+        colors: _gutenberg_utils_default_colors_js__WEBPACK_IMPORTED_MODULE_5__["default"]
       }]
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: className,
@@ -192,11 +173,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _utils_default_colors_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/default-colors.js */ "./development/gutenberg/utils/default-colors.js");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_default_colors_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/default-colors.js */ "./development/gutenberg/utils/default-colors.js");
+
 
 
 
@@ -210,7 +194,7 @@ const ColorPanel = ({
     underlineColor,
     bgc
   } = attributes;
-  const [activePicker, setActivePicker] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)(null);
+  const [activePicker, setActivePicker] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(null);
   const ColorControl = ({
     label,
     colorValue,
@@ -243,7 +227,7 @@ const ColorPanel = ({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Flex, {
     gap: "3px",
     wrap: true
-  }, _utils_default_colors_js__WEBPACK_IMPORTED_MODULE_4__["default"].slice(0, 8).map((color, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+  }, _utils_default_colors_js__WEBPACK_IMPORTED_MODULE_5__["default"].slice(0, 8).map((color, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     key: index,
     onClick: () => setAttributes({
       [colorKey]: color
@@ -269,7 +253,7 @@ const ColorPanel = ({
       padding: 0,
       fontSize: '10px'
     },
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Сбросить', 'theme')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Сбросить', 'theme')
   }, "\xD7")), activePicker === colorKey && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Popover, {
     position: "bottom left",
     onClose: () => setActivePicker(null)
@@ -284,21 +268,31 @@ const ColorPanel = ({
     })
   }))));
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Цвета', 'theme'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Цвета', 'theme'),
     initialOpen: false
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Flex, {
     direction: "column",
     gap: "12px"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Подчеркивание заголовка', 'theme'),
-    colorValue: underlineColor,
-    colorKey: "underlineColor",
-    defaultLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Цвет подчеркивания', 'theme')
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Фон', 'theme'),
-    colorValue: bgc,
-    colorKey: "bgc",
-    defaultLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Цвет фона', 'theme')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Подчеркивание заголовка', 'theme'),
+    colorSettings: [{
+      value: underlineColor,
+      onChange: color => setAttributes({
+        underlineColor: color
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Background Color', 'theme'),
+      colors: _utils_default_colors_js__WEBPACK_IMPORTED_MODULE_5__["default"]
+    }]
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Фон', 'theme'),
+    colorSettings: [{
+      value: bgc,
+      onChange: color => setAttributes({
+        bgc: color
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Background Color', 'theme'),
+      colors: _utils_default_colors_js__WEBPACK_IMPORTED_MODULE_5__["default"]
+    }]
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ColorPanel);
@@ -814,6 +808,8 @@ const Save = ({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "h2-underline",
     style: {
+      width: '100%',
+      height: '8px',
       backgroundColor: underlineColor
     }
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1763,28 +1759,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-const colors = ['#ffffff',
-// белый
-'#f8f9fa',
-// светло-серый
-'#e9ecef',
-// серый
-'#007bff',
-// синий
-'#28a745',
-// зеленый
-'#dc3545',
-// красный
-'#ffc107',
-// желтый
-'#6f42c1',
-// фиолетовый
-'#fd7e14',
-// оранжевый
-'#20c997',
-// бирюзовый
-'#000000' // черный
-];
+const colors = [{
+  name: 'Blue',
+  color: '#26A3D1'
+}, {
+  name: 'Blue Light',
+  color: '#EAF1F4'
+}, {
+  name: 'Blue Dark',
+  color: '#003760'
+}, {
+  name: 'Orange',
+  color: '#ff762f'
+}, {
+  name: 'Green',
+  color: '#01A781'
+}, {
+  name: 'Green Dark',
+  color: '#002b2a'
+}, {
+  name: 'Red Dark',
+  color: '#6D0916'
+}];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (colors);
 
 /***/ }),

@@ -1,15 +1,11 @@
 const colors = [
-  '#ffffff', // белый
-  '#f8f9fa', // светло-серый
-  '#e9ecef', // серый
-  '#007bff', // синий
-  '#28a745', // зеленый
-  '#dc3545', // красный
-  '#ffc107', // желтый
-  '#6f42c1', // фиолетовый
-  '#fd7e14', // оранжевый
-  '#20c997', // бирюзовый
-  '#000000'  // черный
-];
+  { name: 'Blue', color: '#26A3D1' },
+  { name: 'Blue Light', color: '#EAF1F4' },
+  { name: 'Blue Dark', color: '#003760' },
+  { name: 'Orange', color: '#ff762f' },
+  { name: 'Green', color: '#01A781' },
+  { name: 'Green Dark', color: '#002b2a' },
+  { name: 'Red Dark', color: '#6D0916' },
+]
 
 export default colors;
