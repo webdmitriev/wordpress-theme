@@ -4,14 +4,12 @@ const Save = ({ attributes }) => {
   const {
     title,
     subTitleOne,
-    divider,
     subTitleTwo,
     descr,
+    divider,
     imageUrl,
-    imageSrcSet,   // массив или строка с srcSet
-    imageSizes,    // атрибут sizes
-    imageAlt,      // alt текст
-    imageWebp,     // webp версия, если есть
+    imageAlt,
+    responsive,
     cf7
   } = attributes;
 
@@ -23,19 +21,22 @@ const Save = ({ attributes }) => {
     <main {...blockProps}>
       {imageUrl && (
         <picture>
-          {imageWebp && <source srcSet={imageWebp} type="image/webp" />}
+          {responsive?.webp && (
+            <source srcSet={responsive.webp} type="image/webp" />
+          )}
+          {responsive?.jpg && (
+            <source srcSet={responsive.jpg} type="image/jpeg" />
+          )}
           <img
+            src={responsive?.default || imageUrl}
+            alt={responsive?.alt || imageAlt || title || 'MGU'}
             className="mgu-main__bg"
-            src={imageUrl}
-            srcSet={imageSrcSet}
-            sizes={imageSizes || '100vw'}
-            alt={imageAlt || title || 'background'}
             loading="lazy"
             decoding="async"
-            style={{ width: '100%', height: 'auto', display: 'block' }}
           />
         </picture>
       )}
+
       <div className="container df-sp-ce">
         <div className="mgu-main__content">
           {title && (
@@ -71,7 +72,7 @@ const Save = ({ attributes }) => {
           )}
 
         </div>
-        {cf7 && (cf7)}
+        {cf7 && <div dangerouslySetInnerHTML={{ __html: cf7 }} />}
       </div>
     </main>
   );

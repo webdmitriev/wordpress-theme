@@ -140,7 +140,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+const attributes = {
   title: {
     type: 'string',
     default: ''
@@ -148,10 +148,6 @@ __webpack_require__.r(__webpack_exports__);
   subTitleOne: {
     type: 'string',
     default: ''
-  },
-  divider: {
-    type: 'bool',
-    default: true
   },
   subTitleTwo: {
     type: 'string',
@@ -161,19 +157,41 @@ __webpack_require__.r(__webpack_exports__);
     type: 'string',
     default: ''
   },
-  cf7: {
-    type: 'string',
-    default: ''
+  divider: {
+    type: 'boolean',
+    default: false
   },
-  imageUrl: {
+  cf7: {
     type: 'string',
     default: ''
   },
   imageId: {
     type: 'number',
     default: 0
+  },
+  imageUrl: {
+    type: 'string',
+    default: ''
+  },
+  imageWebp: {
+    type: 'string',
+    default: ''
+  },
+  imageAlt: {
+    type: 'string',
+    default: ''
+  },
+  responsive: {
+    type: "object",
+    default: {
+      webp: "",
+      jpg: "",
+      default: "",
+      alt: ""
+    }
   }
-});
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (attributes);
 
 /***/ }),
 
@@ -354,10 +372,11 @@ const Edit = ({
   const {
     title,
     subTitleOne,
-    divider,
     subTitleTwo,
+    divider,
     descr,
     imageUrl,
+    imageWebp,
     imageId,
     cf7
   } = attributes;
@@ -378,16 +397,15 @@ const Edit = ({
     autoLinkContent(attributes, setAttributes, ['subTitleOne', 'subTitleTwo', 'descr']);
   };
 
-  // Handlers
+  // Handlers image
   const {
     onSelectImage
   } = (0,_utils_useOptimizedMedia__WEBPACK_IMPORTED_MODULE_5__.useOptimizedMedia)(setAttributes);
-  const onRemoveImage = () => {
-    setAttributes({
-      imageUrl: '',
-      imageId: 0
-    });
-  };
+  const onRemoveImage = () => setAttributes({
+    imageUrl: '',
+    imageWebp: '',
+    imageId: 0
+  });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_9__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_ContentPanel__WEBPACK_IMPORTED_MODULE_10__["default"], {
     attributes: attributes,
     setAttributes: setAttributes
@@ -492,7 +510,6 @@ const Edit = ({
       className: "advanced-block-image"
     }, imageUrl ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       src: imageUrl,
-      className: "advanced-image-preview",
       alt: "",
       style: {
         borderRadius: '8px'
@@ -547,13 +564,18 @@ const Edit = ({
     rows: 1
   }))), viewMode === 'production' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block-preview"
-  }, imageUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  }, imageUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("picture", null, imageWebp && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
+    srcSet: imageWebp,
+    type: "image/webp"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imageUrl,
-    className: "mgu-main__bg",
     alt: "",
+    className: "mgu-main__bg",
     style: {
       borderRadius: '8px'
-    }
+    },
+    loading: "lazy",
+    decoding: "async"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "preview-content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
@@ -658,18 +680,12 @@ const Save = ({
   const {
     title,
     subTitleOne,
-    divider,
     subTitleTwo,
     descr,
+    divider,
     imageUrl,
-    imageSrcSet,
-    // массив или строка с srcSet
-    imageSizes,
-    // атрибут sizes
     imageAlt,
-    // alt текст
-    imageWebp,
-    // webp версия, если есть
+    responsive,
     cf7
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
@@ -677,22 +693,18 @@ const Save = ({
   });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("main", {
     ...blockProps
-  }, imageUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("picture", null, imageWebp && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
-    srcSet: imageWebp,
+  }, imageUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("picture", null, responsive?.webp && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
+    srcSet: responsive.webp,
     type: "image/webp"
+  }), responsive?.jpg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
+    srcSet: responsive.jpg,
+    type: "image/jpeg"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: responsive?.default || imageUrl,
+    alt: responsive?.alt || imageAlt || title || 'MGU',
     className: "mgu-main__bg",
-    src: imageUrl,
-    srcSet: imageSrcSet,
-    sizes: imageSizes || '100vw',
-    alt: imageAlt || title || 'background',
     loading: "lazy",
-    decoding: "async",
-    style: {
-      width: '100%',
-      height: 'auto',
-      display: 'block'
-    }
+    decoding: "async"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "container df-sp-ce"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -715,7 +727,11 @@ const Save = ({
     tagName: "p",
     className: "descr",
     value: descr
-  })), cf7 && cf7));
+  })), cf7 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    dangerouslySetInnerHTML: {
+      __html: cf7
+    }
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Save);
 
@@ -1230,23 +1246,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
- * Хук для выбора изображения и сохранения всех атрибутов
- * для оптимизированного вывода.
+ * Хук для выбора изображения и сохранения всех атрибутов,
+ * включая adaptive/responsive версии, с WebP.
  */
 const useOptimizedMedia = setAttributes => {
   const onSelectImage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(media => {
-    if (!media || !media.url) return;
-    const srcSet = media.sizes ? Object.values(media.sizes).map(s => `${s.url} ${s.width}w`).join(', ') : '';
+    if (!media || !media.id) return;
 
-    // sizes можно кастомизировать под свою сетку
-    const sizes = '(max-width: 768px) 100vw, 50vw';
+    // Берём responsive из REST API, который вернул PHP
+    const responsive = media.responsive || {
+      webp: '',
+      jpg: '',
+      default: media.url || ''
+    };
     setAttributes({
-      imageUrl: media.url,
+      imageUrl: media.url || '',
       imageId: media.id,
       imageAlt: media.alt || '',
-      imageSrcSet: srcSet,
-      imageSizes: sizes,
-      imageWebp: media.webp || '' // если используешь плагин конвертации в WebP
+      responsive: responsive
     });
   }, [setAttributes]);
   return {

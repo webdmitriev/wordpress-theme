@@ -43,6 +43,12 @@ require get_template_directory() . '/admin/helpers/sitemap.php';
 
 
 /**
+ * Convert webp
+ */
+require_once get_template_directory() . '/admin/helpers/convert-webp.php';
+
+
+/**
  * Register categories for Gutenberg blocks
  */
 require_once get_template_directory() . '/admin/helpers/register-block-categories.php';

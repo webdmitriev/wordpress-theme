@@ -1,30 +1,27 @@
 import { useCallback } from '@wordpress/element';
 
 /**
- * Хук для выбора изображения и сохранения всех атрибутов
- * для оптимизированного вывода.
+ * Хук для выбора изображения и сохранения всех атрибутов,
+ * включая adaptive/responsive версии, с WebP.
  */
 export const useOptimizedMedia = (setAttributes) => {
   const onSelectImage = useCallback((media) => {
-    if (!media || !media.url) return;
+    if (!media || !media.id) return;
 
-    const srcSet = media.sizes
-      ? Object.values(media.sizes)
-        .map((s) => `${s.url} ${s.width}w`)
-        .join(', ')
-      : '';
-
-    // sizes можно кастомизировать под свою сетку
-    const sizes = '(max-width: 768px) 100vw, 50vw';
+    // Берём responsive из REST API, который вернул PHP
+    const responsive = media.responsive || {
+      webp: '',
+      jpg: '',
+      default: media.url || '',
+    };
 
     setAttributes({
-      imageUrl: media.url,
+      imageUrl: media.url || '',
       imageId: media.id,
       imageAlt: media.alt || '',
-      imageSrcSet: srcSet,
-      imageSizes: sizes,
-      imageWebp: media.webp || '', // если используешь плагин конвертации в WebP
+      responsive: responsive,
     });
+
   }, [setAttributes]);
 
   return { onSelectImage };

@@ -21,10 +21,11 @@ const Edit = ({ attributes, setAttributes }) => {
   const {
     title,
     subTitleOne,
-    divider,
     subTitleTwo,
+    divider,
     descr,
     imageUrl,
+    imageWebp,
     imageId,
     cf7
   } = attributes;
@@ -43,12 +44,9 @@ const Edit = ({ attributes, setAttributes }) => {
     autoLinkContent(attributes, setAttributes, ['subTitleOne', 'subTitleTwo', 'descr']);
   };
 
-  // Handlers
+  // Handlers image
   const { onSelectImage } = useOptimizedMedia(setAttributes);
-
-  const onRemoveImage = () => {
-    setAttributes({ imageUrl: '', imageId: 0 });
-  };
+  const onRemoveImage = () => setAttributes({ imageUrl: '', imageWebp: '', imageId: 0 });
 
   return (
     <>
@@ -136,24 +134,10 @@ const Edit = ({ attributes, setAttributes }) => {
                         <div className="advanced-block-image">
                           {imageUrl ? (
                             <>
-                              <img
-                                src={imageUrl}
-                                className="advanced-image-preview"
-                                alt=""
-                                style={{ borderRadius: '8px' }}
-                              />
+                              <img src={imageUrl} alt="" style={{ borderRadius: '8px' }} />
                               <div style={{ display: 'flex', gap: '6px', marginTop: '4px' }}>
-                                <Button onClick={open} variant="secondary" size="small">
-                                  ✏️ {__('Заменить', 'theme')}
-                                </Button>
-                                <Button
-                                  onClick={onRemoveImage}
-                                  variant="tertiary"
-                                  size="small"
-                                  isDestructive
-                                >
-                                  🗑 {__('Удалить', 'theme')}
-                                </Button>
+                                <Button onClick={open} variant="secondary" size="small">✏️ {__('Заменить', 'theme')}</Button>
+                                <Button onClick={onRemoveImage} variant="tertiary" size="small" isDestructive>🗑 {__('Удалить', 'theme')}</Button>
                               </div>
                             </>
                           ) : (
@@ -194,14 +178,17 @@ const Edit = ({ attributes, setAttributes }) => {
             <div className="advanced-block-preview">
 
               {imageUrl && (
-                <>
+                <picture>
+                  {imageWebp && <source srcSet={imageWebp} type="image/webp" />}
                   <img
                     src={imageUrl}
-                    className="mgu-main__bg"
                     alt=""
+                    className="mgu-main__bg"
                     style={{ borderRadius: '8px' }}
+                    loading="lazy"
+                    decoding="async"
                   />
-                </>
+                </picture>
               )}
 
               <div className="preview-content">
