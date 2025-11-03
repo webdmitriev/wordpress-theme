@@ -27,22 +27,54 @@ export const typographText = (text) => {
 };
 
 
+// Вспомогательная функция для обработки вложенных полей
+const processNestedField = (attributes, fieldPath) => {
+  // Проверяем, является ли поле вложенным массивом (формат: 'items[].content')
+  if (fieldPath.includes('[].')) {
+    const [arrayField, nestedField] = fieldPath.split('[].');
+    const array = attributes[arrayField];
+
+    if (Array.isArray(array)) {
+      return array.map(item => ({
+        ...item,
+        [nestedField]: typographText(item[nestedField])
+      }));
+    }
+    return array;
+  }
+
+  // Обычное поле
+  return typographText(attributes[fieldPath]);
+};
+
+
 // Универсальный хук для подключения к любому блоку
 export const useTypograf = (attributes, setAttributes, fields) => {
   const typographField = (fieldName) => {
-    const value = attributes[fieldName];
-    if (value) {
-      setAttributes({ [fieldName]: typographText(value) });
+    const processedValue = processNestedField(attributes, fieldName);
+
+    if (fieldName.includes('[].')) {
+      const [arrayField] = fieldName.split('[].');
+      setAttributes({ [arrayField]: processedValue });
+    } else {
+      setAttributes({ [fieldName]: processedValue });
     }
   };
 
   const typographAllFields = () => {
     const newAttributes = {};
+
     fields.forEach((field) => {
-      if (attributes[field]) {
-        newAttributes[field] = typographText(attributes[field]);
+      const processedValue = processNestedField(attributes, field);
+
+      if (field.includes('[].')) {
+        const [arrayField] = field.split('[].');
+        newAttributes[arrayField] = processedValue;
+      } else {
+        newAttributes[field] = processedValue;
       }
     });
+
     setAttributes(newAttributes);
   };
 

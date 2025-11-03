@@ -277,6 +277,10 @@ th {
   right: 0;
   bottom: 0;
 }
+.mgu-advantages .repeater-items .repeater-item [role=textbox] {
+  font-size: 14px;
+  text-align: center;
+}
 
 .development {
   padding: 20px;
@@ -750,6 +754,10 @@ th {
 .mgu-advantages .repeater-items .repeater-item .repeater-image .delete-icon {
   right: 0;
   bottom: 0;
+}
+.mgu-advantages .repeater-items .repeater-item [role=textbox] {
+  font-size: 14px;
+  text-align: center;
 }
 
 .development {

@@ -201,17 +201,18 @@ const ContentPanel = ({
 }) => {
   const {
     title,
-    subTitleOne,
-    subTitleTwo,
-    descr
+    items
   } = attributes;
 
-  // Подключаем общий хук
+  // Подключаем общий хук с указанием полей для типографирования
   const {
     typographField,
     typographAllFields
-  } = (0,_utils_useTypograf__WEBPACK_IMPORTED_MODULE_3__.useTypograf)(attributes, setAttributes, ['title', 'subTitleOne', 'subTitleTwo', 'descr']);
-  const hasTextToTypograph = title || subTitleOne || subTitleTwo || descr;
+  } = (0,_utils_useTypograf__WEBPACK_IMPORTED_MODULE_3__.useTypograf)(attributes, setAttributes, ['title', 'items[].content' // Указываем, что нужно типографировать поле content в каждом item
+  ]);
+
+  // Проверяем наличие текста для типографирования
+  const hasTextToTypograph = title || items.some(item => item.content && item.content.trim() !== '');
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Типограф', 'theme'),
     initialOpen: false
@@ -239,7 +240,13 @@ const ContentPanel = ({
       color: '#757575',
       textAlign: 'center'
     }
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Расставит кавычки, тире и неразрывные пробелы', 'theme')))));
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Расставит кавычки, тире и неразрывные пробелы', 'theme')))), !hasTextToTypograph && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      padding: '10px',
+      textAlign: 'center',
+      color: '#757575'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Нет текста для типографирования', 'theme')));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContentPanel);
 
@@ -1893,21 +1900,49 @@ const typographText = text => {
   return result;
 };
 
+// Вспомогательная функция для обработки вложенных полей
+const processNestedField = (attributes, fieldPath) => {
+  // Проверяем, является ли поле вложенным массивом (формат: 'items[].content')
+  if (fieldPath.includes('[].')) {
+    const [arrayField, nestedField] = fieldPath.split('[].');
+    const array = attributes[arrayField];
+    if (Array.isArray(array)) {
+      return array.map(item => ({
+        ...item,
+        [nestedField]: typographText(item[nestedField])
+      }));
+    }
+    return array;
+  }
+
+  // Обычное поле
+  return typographText(attributes[fieldPath]);
+};
+
 // Универсальный хук для подключения к любому блоку
 const useTypograf = (attributes, setAttributes, fields) => {
   const typographField = fieldName => {
-    const value = attributes[fieldName];
-    if (value) {
+    const processedValue = processNestedField(attributes, fieldName);
+    if (fieldName.includes('[].')) {
+      const [arrayField] = fieldName.split('[].');
       setAttributes({
-        [fieldName]: typographText(value)
+        [arrayField]: processedValue
+      });
+    } else {
+      setAttributes({
+        [fieldName]: processedValue
       });
     }
   };
   const typographAllFields = () => {
     const newAttributes = {};
     fields.forEach(field => {
-      if (attributes[field]) {
-        newAttributes[field] = typographText(attributes[field]);
+      const processedValue = processNestedField(attributes, field);
+      if (field.includes('[].')) {
+        const [arrayField] = field.split('[].');
+        newAttributes[arrayField] = processedValue;
+      } else {
+        newAttributes[field] = processedValue;
       }
     });
     setAttributes(newAttributes);
