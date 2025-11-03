@@ -375,4 +375,8 @@ th {
   width: 980px;
 }
 
+.block-editor-block-list__block {
+  margin: 0 !important;
+}
+
 /*# sourceMappingURL=index.css.map*/
