@@ -9,6 +9,7 @@ import {
 import { Button, ToggleControl, RadioControl, TextareaControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
+import { useOptimizedMedia } from '../../utils/useOptimizedMedia';
 import mainBlockImg from '../../../../admin/assets/img/blocks/mgu-main.png';
 
 import { useAutoLinking } from '../../utils/useAutoLinking';
@@ -43,12 +44,7 @@ const Edit = ({ attributes, setAttributes }) => {
   };
 
   // Handlers
-  const onSelectImage = (media) => {
-    setAttributes({
-      imageUrl: media.url,
-      imageId: media.id,
-    });
-  };
+  const { onSelectImage } = useOptimizedMedia(setAttributes);
 
   const onRemoveImage = () => {
     setAttributes({ imageUrl: '', imageId: 0 });
@@ -222,7 +218,6 @@ const Edit = ({ attributes, setAttributes }) => {
               </div>
             </div>
           )}
-
         </div>
       </div>
     </>

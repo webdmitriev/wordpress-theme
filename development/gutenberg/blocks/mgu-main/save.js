@@ -8,7 +8,10 @@ const Save = ({ attributes }) => {
     subTitleTwo,
     descr,
     imageUrl,
-    imageId,
+    imageSrcSet,   // массив или строка с srcSet
+    imageSizes,    // атрибут sizes
+    imageAlt,      // alt текст
+    imageWebp,     // webp версия, если есть
     cf7
   } = attributes;
 
@@ -19,7 +22,19 @@ const Save = ({ attributes }) => {
   return (
     <main {...blockProps}>
       {imageUrl && (
-        <img className="mgu-main__bg" src={imageUrl} alt="alto" loading="lazy" decoding="async" />
+        <picture>
+          {imageWebp && <source srcSet={imageWebp} type="image/webp" />}
+          <img
+            className="mgu-main__bg"
+            src={imageUrl}
+            srcSet={imageSrcSet}
+            sizes={imageSizes || '100vw'}
+            alt={imageAlt || title || 'background'}
+            loading="lazy"
+            decoding="async"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
+        </picture>
       )}
       <div className="container df-sp-ce">
         <div className="mgu-main__content">
