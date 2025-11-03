@@ -2,6 +2,11 @@
 
 defined('ABSPATH') || exit;
 
+/*
+ * Remove admin bar (front page)
+ */
+add_filter('show_admin_bar', '__return_false');
+
 /**
  * Post types
  */
@@ -35,6 +40,12 @@ require get_template_directory() . '/admin/helpers/sitemap.php';
  * Advanced Auto Linking
  */
 // require_once get_template_directory() . '/admin/helpers/AdvancedAutoLinking.php';
+
+
+/**
+ * Register categories for Gutenberg blocks
+ */
+require_once get_template_directory() . '/admin/helpers/register-block-categories.php';
 
 
 /**

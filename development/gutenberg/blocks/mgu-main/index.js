@@ -8,7 +8,7 @@ import './style.scss';
 
 registerBlockType('theme/main-block', {
   title: 'Main block',
-  category: 'webdmitriev',
+  category: 'landing',
   icon: 'admin-customizer',
   description: ' ',
   attributes,

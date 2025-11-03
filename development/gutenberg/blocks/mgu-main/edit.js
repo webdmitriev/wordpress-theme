@@ -6,7 +6,7 @@ import {
   MediaUpload,
   MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { Button, ToggleControl } from '@wordpress/components';
+import { Button, ToggleControl, TextareaControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 import { useAutoLinking } from '../../utils/useAutoLinking';
@@ -23,12 +23,19 @@ const Edit = ({ attributes, setAttributes }) => {
     descr,
     imageUrl,
     imageId,
+    cf7
   } = attributes;
 
   const [isPreview, setIsPreview] = useState(true);
 
   const togglePreview = () => {
     setIsPreview(!isPreview);
+  };
+
+  const [isDivide, setIsDivide] = useState(true);
+
+  const toggleDivide = () => {
+    setIsDivide(!isDivide);
   };
 
   const blockProps = useBlockProps({
@@ -102,6 +109,11 @@ const Edit = ({ attributes, setAttributes }) => {
                   allowedFormats={['core/bold', 'core/italic', 'core/link']}
                 />
               </div>
+              <ToggleControl
+                label={isDivide ? __('Убрать линию ❌', 'theme') : __('Добавить линию ✅', 'theme')}
+                checked={isDivide}
+                onChange={toggleDivide}
+              />
               <div className="rich-text">
                 <span>{__('Подзаголовок', 'theme')}</span>
                 <RichText
@@ -112,7 +124,6 @@ const Edit = ({ attributes, setAttributes }) => {
                   allowedFormats={['core/bold', 'core/italic', 'core/link']}
                 />
               </div>
-
               <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', width: '100%' }}>
                 <div className="advanced-block-images" style={{ display: 'block', width: '100%', maxWidth: '32%' }}>
                   <MediaUploadCheck>
@@ -155,17 +166,26 @@ const Edit = ({ attributes, setAttributes }) => {
                   </MediaUploadCheck>
                 </div>
                 <div className="rich-text" style={{ display: 'block', width: '100%', maxWidth: '66%' }}>
-                  <span>{__('Подзаголовок', 'theme')}</span>
+                  <span>{__('Описание', 'theme')}</span>
                   <RichText
                     tagName="p"
                     value={descr}
                     onChange={(value) => setAttributes({ descr: value })}
                     placeholder={__('Описание...', 'theme')}
-                    allowedFormats={['core/bold', 'core/italic', 'core/link']}
+                    allowedFormats={['core/bold', 'core/italic', 'core/link', 'core/underline', 'core/text-color']}
                   />
                 </div>
               </div>
-
+              <div className="rich-text">
+                <TextareaControl
+                  label={__('Контактная форма', 'theme')}
+                  value={cf7}
+                  onChange={(value) => setAttributes({ cf7: value })}
+                  placeholder={__('[contact-form-7 id="123" title="Contact form"]', 'theme')}
+                  help={__('Вставьте шорткод формы Contact Form 7', 'theme')}
+                  rows={1}
+                />
+              </div>
             </div>
           )}
 
@@ -186,7 +206,9 @@ const Edit = ({ attributes, setAttributes }) => {
               <div className="preview-content">
                 <RichText.Content tagName="h1" value={title} className="h1" />
                 <RichText.Content tagName="p" value={subTitleOne} className="sub_title" />
-                <div className="divider"></div>
+                {isDivide && (
+                  <div className="divider"></div>
+                )}
                 <RichText.Content tagName="p" value={subTitleTwo} className="sub_title" />
                 <RichText.Content tagName="p" value={descr} className="descr" />
               </div>

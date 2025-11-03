@@ -1,32 +1,10 @@
-import { addFilter } from '@wordpress/hooks';
-import { __ } from '@wordpress/i18n';
-
-// Добавляем новую категорию "WebDmitriev Blocks"
-addFilter(
-  'blocks.registerCategory',
-  'theme/register-custom-category',
-  (categories, _) => {
-    if (!categories.some((cat) => cat.slug === 'webdmitriev')) {
-      return [
-        ...categories,
-        {
-          slug: 'webdmitriev',
-          title: __('NZ OVERSEAS Blocks', 'theme'),
-          icon: 'star-filled',
-        },
-      ];
-    }
-    return categories;
-  }
-);
-
-// CEO
+// add CEO
 import './seo-panel.js';
 
-// import blocks
-// import './formats/list-format.js';
+// ext blocks
+import '../extends/spacer-bg.js';
+
+// add blocks
 import './formats/li-format.js';
 
 import './blocks/mgu-main/index.js';
-// import './blocks/main/index.js';
-// import './blocks/form/index.js';

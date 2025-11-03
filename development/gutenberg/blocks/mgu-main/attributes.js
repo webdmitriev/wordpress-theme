@@ -19,6 +19,10 @@ export default {
     type: 'string',
     default: '',
   },
+  cf7: {
+    type: 'string',
+    default: '',
+  },
   imageUrl: { type: 'string', default: '' },
   imageId: { type: 'number', default: 0 },
 };
