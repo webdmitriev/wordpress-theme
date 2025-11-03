@@ -123,7 +123,7 @@ const Edit = ({ attributes, setAttributes }) => {
                   allowedFormats={['core/bold', 'core/italic', 'core/link']}
                 />
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', width: '100%' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', width: '100%', marginBottom: '16px' }}>
                 <div className="advanced-block-images" style={{ display: 'block', width: '100%', maxWidth: '32%' }}>
                   <MediaUploadCheck>
                     <MediaUpload

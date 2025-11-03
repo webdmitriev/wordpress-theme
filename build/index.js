@@ -491,7 +491,8 @@ const Edit = ({
       flexWrap: 'wrap',
       justifyContent: 'space-between',
       alignItems: 'flex-start',
-      width: '100%'
+      width: '100%',
+      marginBottom: '16px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block-images",
