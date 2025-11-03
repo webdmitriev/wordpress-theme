@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 const Save = ({ attributes }) => {
-  const { title, bgc, items } = attributes;
+  const { title, bgc, underlineColor, items } = attributes;
 
   const blockProps = useBlockProps.save({
     style: { backgroundColor: bgc },
@@ -11,11 +11,14 @@ const Save = ({ attributes }) => {
   return (
     <div {...blockProps}>
       <div className="repeater-block">
-        <RichText.Content
-          tagName="h2"
-          value={title}
-          className="repeater-title"
-        />
+        <div>
+          <RichText.Content
+            tagName="h2"
+            value={title}
+            className="repeater-title"
+          />
+          <div className="h2-underline" style={{ backgroundColor: underlineColor }}></div>
+        </div>
 
         <div className="repeater-items">
           {items.map((item, index) => (

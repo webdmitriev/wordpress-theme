@@ -1,5 +1,6 @@
 const attributes = {
   title: { type: 'string', default: '' },
+  underlineColor: { type: 'string', default: '' },
   bgc: { type: 'string', default: '' },
   items: {
     type: 'array',

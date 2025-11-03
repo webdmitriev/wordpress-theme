@@ -3,10 +3,9 @@ import {
   useBlockProps,
   RichText,
   InspectorControls,
-  MediaUpload,
-  MediaUploadCheck,
+  MediaUpload
 } from '@wordpress/block-editor';
-import { Button, TextControl, RadioControl, PanelBody, ColorPicker } from '@wordpress/components';
+import { Button, RadioControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 import mainBlockImg from '../../../../admin/assets/img/blocks/mgu-advantages.png';
@@ -15,10 +14,12 @@ import { useAutoLinking } from '../../utils/useAutoLinking';
 import AutoLinkingPanel from '../../utils/AutoLinkingPanel';
 import VideoHelpPanel from './controls/VideoHelpPanel';
 import ContentPanel from './controls/ContentPanel';
+import ColorPanel from './controls/ColorPanel';
 
 const Edit = ({ attributes, setAttributes }) => {
   const {
     title,
+    underlineColor,
     bgc,
     items
   } = attributes;
@@ -114,12 +115,7 @@ const Edit = ({ attributes, setAttributes }) => {
           postsCount={postsCount}
           disabled={postsCount === 0}
         />
-        <PanelBody title={__('Настройки фона', 'theme')} initialOpen={false}>
-          <ColorPicker
-            color={bgc}
-            onChange={(value) => setAttributes({ bgc: value })}
-          />
-        </PanelBody>
+        <ColorPanel attributes={attributes} setAttributes={setAttributes} />
       </InspectorControls>
 
       <div {...blockProps}>

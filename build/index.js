@@ -156,6 +156,10 @@ const attributes = {
     type: 'string',
     default: ''
   },
+  underlineColor: {
+    type: 'string',
+    default: ''
+  },
   bgc: {
     type: 'string',
     default: ''
@@ -170,6 +174,134 @@ const attributes = {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (attributes);
+
+/***/ }),
+
+/***/ "./development/gutenberg/blocks/mgu-advantages/controls/ColorPanel.js":
+/*!****************************************************************************!*\
+  !*** ./development/gutenberg/blocks/mgu-advantages/controls/ColorPanel.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils_default_colors_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/default-colors.js */ "./development/gutenberg/utils/default-colors.js");
+
+
+
+
+
+const ColorPanel = ({
+  attributes,
+  setAttributes
+}) => {
+  const {
+    underlineColor,
+    bgc
+  } = attributes;
+  const [activePicker, setActivePicker] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)(null);
+  const ColorControl = ({
+    label,
+    colorValue,
+    colorKey,
+    defaultLabel
+  }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      fontSize: '13px',
+      fontWeight: '500',
+      marginBottom: '5px'
+    }
+  }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Flex, {
+    align: "center",
+    gap: "8px"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    variant: "secondary",
+    onClick: () => setActivePicker(activePicker === colorKey ? null : colorKey),
+    style: {
+      width: '100%',
+      height: '26px',
+      backgroundColor: colorValue || '#ffffff',
+      border: '1px solid #ccc',
+      borderRadius: '3px',
+      position: 'relative',
+      backgroundImage: !colorValue ? 'linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%)' : 'none',
+      backgroundSize: '6px 6px',
+      backgroundPosition: '0 0, 0 3px, 3px -3px, -3px 0px'
+    },
+    title: colorValue || defaultLabel
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Flex, {
+    gap: "3px",
+    wrap: true
+  }, _utils_default_colors_js__WEBPACK_IMPORTED_MODULE_4__["default"].slice(0, 8).map((color, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    key: index,
+    onClick: () => setAttributes({
+      [colorKey]: color
+    }),
+    style: {
+      width: '18px',
+      height: '18px',
+      backgroundColor: color,
+      border: colorValue === color ? '2px solid #007cba' : '1px solid #ddd',
+      borderRadius: '2px',
+      minWidth: '18px',
+      padding: 0
+    }
+  }))), colorValue && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    variant: "tertiary",
+    onClick: () => setAttributes({
+      [colorKey]: ''
+    }),
+    style: {
+      width: '18px',
+      height: '18px',
+      minWidth: '18px',
+      padding: 0,
+      fontSize: '10px'
+    },
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Сбросить', 'theme')
+  }, "\xD7")), activePicker === colorKey && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Popover, {
+    position: "bottom left",
+    onClose: () => setActivePicker(null)
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      padding: '10px'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPicker, {
+    color: colorValue,
+    onChange: value => setAttributes({
+      [colorKey]: value
+    })
+  }))));
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Цвета', 'theme'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Flex, {
+    direction: "column",
+    gap: "12px"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Подчеркивание заголовка', 'theme'),
+    colorValue: underlineColor,
+    colorKey: "underlineColor",
+    defaultLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Цвет подчеркивания', 'theme')
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Фон', 'theme'),
+    colorValue: bgc,
+    colorKey: "bgc",
+    defaultLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Цвет фона', 'theme')
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ColorPanel);
 
 /***/ }),
 
@@ -338,6 +470,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_AutoLinkingPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/AutoLinkingPanel */ "./development/gutenberg/utils/AutoLinkingPanel.js");
 /* harmony import */ var _controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./controls/VideoHelpPanel */ "./development/gutenberg/blocks/mgu-advantages/controls/VideoHelpPanel.js");
 /* harmony import */ var _controls_ContentPanel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./controls/ContentPanel */ "./development/gutenberg/blocks/mgu-advantages/controls/ContentPanel.js");
+/* harmony import */ var _controls_ColorPanel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./controls/ColorPanel */ "./development/gutenberg/blocks/mgu-advantages/controls/ColorPanel.js");
+
 
 
 
@@ -354,6 +488,7 @@ const Edit = ({
 }) => {
   const {
     title,
+    underlineColor,
     bgc,
     items
   } = attributes;
@@ -458,15 +593,10 @@ const Edit = ({
     onAutoLink: handleAutoLink,
     postsCount: postsCount,
     disabled: postsCount === 0
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Настройки фона', 'theme'),
-    initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPicker, {
-    color: bgc,
-    onChange: value => setAttributes({
-      bgc: value
-    })
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_ColorPanel__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    attributes: attributes,
+    setAttributes: setAttributes
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block"
@@ -664,6 +794,7 @@ const Save = ({
   const {
     title,
     bgc,
+    underlineColor,
     items
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
@@ -676,11 +807,16 @@ const Save = ({
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "repeater-block"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "h2",
     value: title,
     className: "repeater-title"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "h2-underline",
+    style: {
+      backgroundColor: underlineColor
+    }
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "repeater-items"
   }, items.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
@@ -1613,6 +1749,43 @@ const AutoLinkingPanel = ({
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Available posts:', 'theme'), " ", postsCount))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AutoLinkingPanel);
+
+/***/ }),
+
+/***/ "./development/gutenberg/utils/default-colors.js":
+/*!*******************************************************!*\
+  !*** ./development/gutenberg/utils/default-colors.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const colors = ['#ffffff',
+// белый
+'#f8f9fa',
+// светло-серый
+'#e9ecef',
+// серый
+'#007bff',
+// синий
+'#28a745',
+// зеленый
+'#dc3545',
+// красный
+'#ffc107',
+// желтый
+'#6f42c1',
+// фиолетовый
+'#fd7e14',
+// оранжевый
+'#20c997',
+// бирюзовый
+'#000000' // черный
+];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (colors);
 
 /***/ }),
 
