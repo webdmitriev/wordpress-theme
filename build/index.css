@@ -1,6 +1,189 @@
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/@wordpress/scripts/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/@wordpress/scripts/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./development/gutenberg/blocks/mgu-main/editor.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+a {
+  text-decoration: none;
+}
+a:active, a:hover {
+  outline: 0;
+}
+
+ul,
+li {
+  list-style: none;
+  list-style-type: none;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+html,
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: 0;
+}
+
+img,
+audio,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+audio,
+canvas,
+iframe,
+video,
+img,
+svg {
+  vertical-align: middle;
+}
+
+iframe {
+  border: 0;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+  vertical-align: top;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+
+input,
+textarea,
+select,
+button {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+button,
+input {
+  line-height: normal;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+  text-align: left;
+}
+
+.advanced-block-preview {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  padding: 40px 24px;
+  container: main-container/inline-size;
+}
+.advanced-block-preview .mgu-main__bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1920px;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.advanced-block-preview .preview-content {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: calc(100% - 340px);
+  z-index: 10;
+}
+.advanced-block-preview .preview-content .h1 {
+  display: block;
+  width: 100%;
+  margin: 0 0 8px 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.4;
+  color: #ffffff;
+}
+.advanced-block-preview .preview-content p {
+  display: block;
+  width: 100%;
+  margin: 0 0 24px 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #ffffff;
+}
+.advanced-block-preview .preview-content .sub_title {
+  margin-bottom: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #ffffff;
+}
+.advanced-block-preview .preview-content .divider {
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-block: 24px;
+  background-color: #ffffff;
+}
+.advanced-block-preview .preview-content .descr {
+  font-size: 15px;
+}
+.advanced-block-preview .wpcf7 {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 310px;
+  padding: 24px;
+  background-color: #eff1f3;
+  border-radius: 16px;
+  z-index: 10;
+}
+
+@container main-container (max-width: 700px) {
+  .advanced-block-preview {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+  .advanced-block-preview .preview-content {
+    max-width: calc(100% - 280px);
+  }
+  .advanced-block-preview .wpcf7 {
+    max-width: 260px;
+  }
+}
 .development {
   margin: 20px 0;
   padding: 20px;
