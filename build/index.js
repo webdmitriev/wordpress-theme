@@ -1,6 +1,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./admin/assets/img/blocks/mgu-main.png":
+/*!**********************************************!*\
+  !*** ./admin/assets/img/blocks/mgu-main.png ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/mgu-main.67f84f9d.png";
+
+/***/ }),
+
 /***/ "./development/extends/spacer-bg.js":
 /*!******************************************!*\
   !*** ./development/extends/spacer-bg.js ***!
@@ -55,11 +66,17 @@ const withBackgroundColorControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODUL
     });
     const {
       attributes,
-      setAttributes
+      setAttributes,
+      className
     } = props;
     const {
       backgroundColor
     } = attributes;
+
+    // новый стиль для визуализации цвета прямо в редакторе
+    const blockStyle = backgroundColor ? {
+      backgroundColor
+    } : {};
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', 'theme'),
       colorSettings: [{
@@ -67,9 +84,31 @@ const withBackgroundColorControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODUL
         onChange: color => setAttributes({
           backgroundColor: color
         }),
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', 'theme')
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', 'theme'),
+        colors: [{
+          name: 'Blue',
+          color: '#26A3D1'
+        }, {
+          name: 'Blue Dark',
+          color: '#003760'
+        }, {
+          name: 'Orange',
+          color: '#ff762f'
+        }, {
+          name: 'Green',
+          color: '#01A781'
+        }, {
+          name: 'Green Dark',
+          color: '#002b2a'
+        }, {
+          name: 'Red Dark',
+          color: '#6D0916'
+        }]
       }]
-    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, {
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: className,
+      style: blockStyle
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, {
       ...props
     })));
   };
@@ -291,10 +330,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _utils_useAutoLinking__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/useAutoLinking */ "./development/gutenberg/utils/useAutoLinking.js");
-/* harmony import */ var _utils_AutoLinkingPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/AutoLinkingPanel */ "./development/gutenberg/utils/AutoLinkingPanel.js");
-/* harmony import */ var _controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./controls/VideoHelpPanel */ "./development/gutenberg/blocks/mgu-main/controls/VideoHelpPanel.js");
-/* harmony import */ var _controls_ContentPanel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./controls/ContentPanel */ "./development/gutenberg/blocks/mgu-main/controls/ContentPanel.js");
+/* harmony import */ var _admin_assets_img_blocks_mgu_main_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../admin/assets/img/blocks/mgu-main.png */ "./admin/assets/img/blocks/mgu-main.png");
+/* harmony import */ var _utils_useAutoLinking__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/useAutoLinking */ "./development/gutenberg/utils/useAutoLinking.js");
+/* harmony import */ var _utils_AutoLinkingPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/AutoLinkingPanel */ "./development/gutenberg/utils/AutoLinkingPanel.js");
+/* harmony import */ var _controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./controls/VideoHelpPanel */ "./development/gutenberg/blocks/mgu-main/controls/VideoHelpPanel.js");
+/* harmony import */ var _controls_ContentPanel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./controls/ContentPanel */ "./development/gutenberg/blocks/mgu-main/controls/ContentPanel.js");
+
 
 
 
@@ -318,14 +359,8 @@ const Edit = ({
     imageId,
     cf7
   } = attributes;
-  const [isPreview, setIsPreview] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(true);
-  const togglePreview = () => {
-    setIsPreview(!isPreview);
-  };
-  const [isDivide, setIsDivide] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(true);
-  const toggleDivide = () => {
-    setIsDivide(!isDivide);
-  };
+  const [viewMode, setViewMode] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)('preview'); // 'preview' | 'edit' | 'production'
+
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     className: 'development mgu-main'
   });
@@ -334,7 +369,7 @@ const Edit = ({
   const {
     autoLinkContent,
     postsCount
-  } = (0,_utils_useAutoLinking__WEBPACK_IMPORTED_MODULE_5__.useAutoLinking)();
+  } = (0,_utils_useAutoLinking__WEBPACK_IMPORTED_MODULE_6__.useAutoLinking)();
 
   // Обработчик авто-линкинга
   const handleAutoLink = () => {
@@ -354,10 +389,10 @@ const Edit = ({
       imageId: 0
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_7__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_ContentPanel__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_8__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_ContentPanel__WEBPACK_IMPORTED_MODULE_9__["default"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_AutoLinkingPanel__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_AutoLinkingPanel__WEBPACK_IMPORTED_MODULE_7__["default"], {
     onAutoLink: handleAutoLink,
     postsCount: postsCount,
     disabled: postsCount === 0
@@ -375,11 +410,27 @@ const Edit = ({
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "block-info-title"
-  }, "\uD83C\uDFA8 \u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0431\u043B\u043E\u043A"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    label: isPreview ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Редактирование ✍️', 'theme') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Предпросмотр ☺️', 'theme'),
-    checked: isPreview,
-    onChange: togglePreview
-  })), isPreview && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "\uD83C\uDFA8 \u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0431\u043B\u043E\u043A"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RadioControl, {
+    selected: viewMode,
+    options: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Pveview ✍️', 'theme'),
+      value: 'preview'
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Редактирование ☺️', 'theme'),
+      value: 'edit'
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Результат 🖼️', 'theme'),
+      value: 'production'
+    }],
+    onChange: value => setViewMode(value)
+  })), viewMode === 'preview' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: _admin_assets_img_blocks_mgu_main_png__WEBPACK_IMPORTED_MODULE_5__,
+    className: "preview-image",
+    alt: "",
+    style: {
+      borderRadius: '8px'
+    }
+  }), viewMode === 'edit' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block-content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "rich-text"
@@ -402,9 +453,11 @@ const Edit = ({
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Подзаголовок...', 'theme'),
     allowedFormats: ['core/bold', 'core/italic', 'core/link']
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    label: isDivide ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Убрать линию ❌', 'theme') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Добавить линию ✅', 'theme'),
-    checked: isDivide,
-    onChange: toggleDivide
+    label: divider ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Убрать линию ❌', 'theme') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Добавить линию ✅', 'theme'),
+    checked: divider,
+    onChange: value => setAttributes({
+      divider: value
+    })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "rich-text"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Подзаголовок', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -493,7 +546,7 @@ const Edit = ({
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('[contact-form-7 id="123" title="Contact form"]', 'theme'),
     help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Вставьте шорткод формы Contact Form 7', 'theme'),
     rows: 1
-  }))), !isPreview && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), viewMode === 'production' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block-preview"
   }, imageUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imageUrl,
@@ -512,7 +565,7 @@ const Edit = ({
     tagName: "p",
     value: subTitleOne,
     className: "sub_title"
-  }), isDivide && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), divider && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "divider"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
     tagName: "p",
@@ -571,7 +624,13 @@ __webpack_require__.r(__webpack_exports__);
   description: ' ',
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_3__["default"],
   edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"],
+  example: {
+    attributes: {
+      title: 'Превью заголовка',
+      subTitleOne: 'Превью подзаголовка'
+    }
+  }
 });
 console.log('✅ Main block');
 
@@ -1411,6 +1470,18 @@ module.exports = window["React"];
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -1425,6 +1496,29 @@ module.exports = window["React"];
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */

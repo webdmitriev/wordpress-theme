@@ -185,7 +185,6 @@ th {
   }
 }
 .development {
-  margin: 20px 0;
   padding: 20px;
   border: 2px dashed #ccc;
   border-radius: 12px;
@@ -208,8 +207,29 @@ th {
   border-radius: 8px;
   box-sizing: border-box;
 }
-.development .advanced-block .block-info > .components-base-control {
-  margin: 0;
+.development .advanced-block .block-info .block-info-title {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+}
+.development .advanced-block .block-info .components-radio-control {
+  display: block;
+  width: 100%;
+  max-width: calc(100% - 320px);
+}
+.development .advanced-block .block-info .components-radio-control .components-base-control__label {
+  display: none;
+}
+.development .advanced-block .block-info .components-radio-control .components-flex {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.development .advanced-block .block-info .components-radio-control .components-flex .components-radio-control__option {
+  max-width: -moz-max-content;
+  max-width: max-content;
 }
 .development .advanced-block .rich-text span {
   display: block;

@@ -6,8 +6,10 @@ import {
   MediaUpload,
   MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { Button, ToggleControl, TextareaControl } from '@wordpress/components';
+import { Button, ToggleControl, RadioControl, TextareaControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+
+import mainBlockImg from '../../../../admin/assets/img/blocks/mgu-main.png';
 
 import { useAutoLinking } from '../../utils/useAutoLinking';
 import AutoLinkingPanel from '../../utils/AutoLinkingPanel';
@@ -26,17 +28,7 @@ const Edit = ({ attributes, setAttributes }) => {
     cf7
   } = attributes;
 
-  const [isPreview, setIsPreview] = useState(true);
-
-  const togglePreview = () => {
-    setIsPreview(!isPreview);
-  };
-
-  const [isDivide, setIsDivide] = useState(true);
-
-  const toggleDivide = () => {
-    setIsDivide(!isDivide);
-  };
+  const [viewMode, setViewMode] = useState('preview'); // 'preview' | 'edit' | 'production'
 
   const blockProps = useBlockProps({
     className: 'development mgu-main'
@@ -80,14 +72,27 @@ const Edit = ({ attributes, setAttributes }) => {
         <div className="advanced-block">
           <div className="block-info" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
             <span className="block-info-title">🎨 Главный блок</span>
-            <ToggleControl
-              label={isPreview ? __('Редактирование ✍️', 'theme') : __('Предпросмотр ☺️', 'theme')}
-              checked={isPreview}
-              onChange={togglePreview}
+            <RadioControl
+              selected={viewMode}
+              options={[
+                { label: __('Pveview ✍️', 'theme'), value: 'preview' },
+                { label: __('Редактирование ☺️', 'theme'), value: 'edit' },
+                { label: __('Результат 🖼️', 'theme'), value: 'production' },
+              ]}
+              onChange={(value) => setViewMode(value)}
             />
           </div>
 
-          {isPreview && (
+          {viewMode === 'preview' && (
+            <img
+              src={mainBlockImg}
+              className="preview-image"
+              alt=""
+              style={{ borderRadius: '8px' }}
+            />
+          )}
+
+          {viewMode === 'edit' && (
             <div className="advanced-block-content">
               <div className="rich-text">
                 <span>{__('Заголовок', 'theme')}</span>
@@ -110,9 +115,9 @@ const Edit = ({ attributes, setAttributes }) => {
                 />
               </div>
               <ToggleControl
-                label={isDivide ? __('Убрать линию ❌', 'theme') : __('Добавить линию ✅', 'theme')}
-                checked={isDivide}
-                onChange={toggleDivide}
+                label={divider ? __('Убрать линию ❌', 'theme') : __('Добавить линию ✅', 'theme')}
+                checked={divider}
+                onChange={(value) => setAttributes({ divider: value })}
               />
               <div className="rich-text">
                 <span>{__('Подзаголовок', 'theme')}</span>
@@ -189,7 +194,7 @@ const Edit = ({ attributes, setAttributes }) => {
             </div>
           )}
 
-          {!isPreview && (
+          {viewMode === 'production' && (
             <div className="advanced-block-preview">
 
               {imageUrl && (
@@ -206,7 +211,7 @@ const Edit = ({ attributes, setAttributes }) => {
               <div className="preview-content">
                 <RichText.Content tagName="h1" value={title} className="h1" />
                 <RichText.Content tagName="p" value={subTitleOne} className="sub_title" />
-                {isDivide && (
+                {divider && (
                   <div className="divider"></div>
                 )}
                 <RichText.Content tagName="p" value={subTitleTwo} className="sub_title" />

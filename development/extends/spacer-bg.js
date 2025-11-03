@@ -32,11 +32,17 @@ const withBackgroundColorControl = createHigherOrderComponent((BlockEdit) => {
   return (props) => {
     if (props.name !== 'core/spacer') return <BlockEdit {...props} />;
 
-    const { attributes, setAttributes } = props;
+    const { attributes, setAttributes, className } = props;
     const { backgroundColor } = attributes;
+
+    // новый стиль для визуализации цвета прямо в редакторе
+    const blockStyle = backgroundColor
+      ? { backgroundColor }
+      : {};
 
     return (
       <>
+        {/* Панель настроек справа */}
         <InspectorControls>
           <PanelColorSettings
             title={__('Background Color', 'theme')}
@@ -45,19 +51,29 @@ const withBackgroundColorControl = createHigherOrderComponent((BlockEdit) => {
                 value: backgroundColor,
                 onChange: (color) => setAttributes({ backgroundColor: color }),
                 label: __('Background Color', 'theme'),
+                colors: [
+                  { name: 'Blue', color: '#26A3D1' },
+                  { name: 'Blue Dark', color: '#003760' },
+                  { name: 'Orange', color: '#ff762f' },
+                  { name: 'Green', color: '#01A781' },
+                  { name: 'Green Dark', color: '#002b2a' },
+                  { name: 'Red Dark', color: '#6D0916' },
+                ],
               },
             ]}
           />
         </InspectorControls>
-        <Fragment>
+
+        {/* Блок с визуальным фоном */}
+        <div className={className} style={blockStyle}>
           <BlockEdit {...props} />
-        </Fragment>
+        </div>
       </>
     );
   };
 }, 'withBackgroundColorControl');
-
 addFilter('editor.BlockEdit', 'theme/with-background-color-control', withBackgroundColorControl);
+
 
 // === 3. Добавляем inline-стиль при сохранении ===
 const addBackgroundColorExtraProps = (saveElementProps, blockType, attributes) => {

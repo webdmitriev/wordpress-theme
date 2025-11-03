@@ -14,6 +14,12 @@ registerBlockType('theme/main-block', {
   attributes,
   edit,
   save,
+  example: {
+    attributes: {
+      title: 'Превью заголовка',
+      subTitleOne: 'Превью подзаголовка',
+    },
+  },
 });
 
 console.log('✅ Main block');
