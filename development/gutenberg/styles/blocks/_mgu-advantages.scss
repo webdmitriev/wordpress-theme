@@ -1,0 +1,92 @@
+.mgu-advantages {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  padding: 40px 24px;
+  .repeater-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+    .repeater-item {
+      flex: 1 1 calc(32% - 10px);
+      min-width: 210px;
+      padding: 12px;
+      background-color: #ffffff;
+      box-sizing: border-box;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+      .repeater-item-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 16px;
+        .components-button[disabled] {
+          opacity: 0.4;
+        }
+        .controls-arrow {
+          background-color: #fff;
+          transition: all 0.4s ease;
+          &:hover {
+            background-color: rgba(0, 124, 186, 0.25);
+          }
+        }
+        .components-button.is-destructive {
+          color: #ffffff;
+          background-color: #b90707;
+          border: 1px solid #b90707;
+          border-radius: 3px;
+          transition: all 0.4s ease;
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+      .repeater-image {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        margin-bottom: 16px;
+        .add-icon {
+          padding-block: 2px;
+          color: #333333;
+          background-color: rgba(0, 124, 186, 0.25);
+          border: 1px solid rgba(0, 124, 186, 0.25);
+          border-radius: 3px;
+          &:hover {
+            background-color: transparent;
+          }
+        }
+        .edit-icon,
+        .delete-icon {
+          position: absolute;
+          display: block;
+          width: 36px;
+          height: 36px;
+          padding: 0;
+          background-color: #fff;
+          transition: all 0.4s ease;
+          &:hover {
+            background-color: rgba(0, 124, 186, 0.25);
+          }
+        }
+        .edit-icon {
+          right: 38px;
+          bottom: 0;
+        }
+        .delete-icon {
+          right: 0;
+          bottom: 0;
+        }
+      }
+    }
+  }
+}

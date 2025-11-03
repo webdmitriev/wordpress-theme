@@ -33,6 +33,7 @@ function theme_allowed_blocks( $allowed_blocks, $editor_context ) {
   // перечисли только свои блоки по namespace
   return [
     'theme/main-block',
+    'theme/mgu-advantages',
     'core/paragraph',
     'core/list',
     'core/quote',
