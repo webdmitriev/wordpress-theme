@@ -54,5 +54,35 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
   </div>
 </main>
 
+<section class="mgu-advantages">
+  <div class="container">
+    <div class="block-title"><h2 class="h2">Title</h2></div>
+    <div class="advantages-item">
+      <img class="advantages-item__icon" src="<?= $url; ?>/assets/img/mgu-advantages/icon-1.svg" alt="alto" />
+      <div class="advantages-item__content"><strong>Learning by doing</strong> <br/>Образовательный процесс построен на использовании активных методов обучения. Данная методика позволяет студентам развивать навыки принятия решений, командной работы, коммуникации и лидерства.</div>
+    </div>
+    <div class="advantages-item">
+      <img class="advantages-item__icon" src="<?= $url; ?>/assets/img/mgu-advantages/icon-2.svg" alt="alto" />
+      <div class="advantages-item__content"><strong>Learning by doing</strong> <br/>Образовательный процесс построен на использовании активных методов обучения. Данная методика позволяет студентам развивать навыки принятия решений, командной работы, коммуникации и лидерства.</div>
+    </div>
+    <div class="advantages-item">
+      <img class="advantages-item__icon" src="<?= $url; ?>/assets/img/mgu-advantages/icon-3.svg" alt="alto" />
+      <div class="advantages-item__content"><strong>Learning by doing</strong> <br/>Образовательный процесс построен на использовании активных методов обучения. Данная методика позволяет студентам развивать навыки принятия решений, командной работы, коммуникации и лидерства.</div>
+    </div>
+    <div class="advantages-item">
+      <img class="advantages-item__icon" src="<?= $url; ?>/assets/img/mgu-advantages/icon-4.svg" alt="alto" />
+      <div class="advantages-item__content"><strong>Learning by doing</strong> <br/>Образовательный процесс построен на использовании активных методов обучения. Данная методика позволяет студентам развивать навыки принятия решений, командной работы, коммуникации и лидерства.</div>
+    </div>
+    <div class="advantages-item">
+      <img class="advantages-item__icon" src="<?= $url; ?>/assets/img/mgu-advantages/icon-5.svg" alt="alto" />
+      <div class="advantages-item__content"><strong>Learning by doing</strong> <br/>Образовательный процесс построен на использовании активных методов обучения. Данная методика позволяет студентам развивать навыки принятия решений, командной работы, коммуникации и лидерства.</div>
+    </div>
+    <div class="advantages-item">
+      <img class="advantages-item__icon" src="<?= $url; ?>/assets/img/mgu-advantages/icon-6.svg" alt="alto" />
+      <div class="advantages-item__content"><strong>Learning by doing</strong> <br/>Образовательный процесс построен на использовании активных методов обучения. Данная методика позволяет студентам развивать навыки принятия решений, командной работы, коммуникации и лидерства.</div>
+    </div>
+  </div>
+</section>
+
 <?php
 get_footer();

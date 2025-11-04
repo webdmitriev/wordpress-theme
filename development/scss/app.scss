@@ -14,7 +14,7 @@
 // components
 // @use "components/block-title";
 @use "./components/h1";
-// @use "components/h2";
+@use "./components/h2";
 @use "./components/sub_title";
 @use "./components/descr";
 @use "./components/divider";
@@ -24,7 +24,8 @@
 // @use "components/breadcrumbs";
 
 // MGU blocks
-@use "./mgu-blocks/mgu-main.scss";
+@use "./mgu-blocks/mgu-main";
+@use "./mgu-blocks/mgu-advantages";
 
 // animations
 @use "./data/animations";
