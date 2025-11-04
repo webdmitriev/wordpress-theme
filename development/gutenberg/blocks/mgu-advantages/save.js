@@ -10,37 +10,29 @@ const Save = ({ attributes }) => {
 
   return (
     <div {...blockProps}>
-      <div className="repeater-block">
-        <div>
+      <div className="container">
+        <div className="block-title">
           <RichText.Content
             tagName="h2"
             value={title}
-            className="repeater-title"
+            className="h2"
+            style={{ backgroundImage: `linear-gradient(180deg, ${underlineColor}, ${underlineColor})` }}
           />
-          <div className="h2-underline" style={{ width: '100%', height: '8px', backgroundColor: underlineColor }}></div>
         </div>
-
-        <div className="repeater-items">
-          {items.map((item, index) => (
-            <div key={index} className="repeater-item">
-              {item.imageURL && (
-                <div className="repeater-image">
-                  <img
-                    src={item.imageURL}
-                    alt=""
-                  />
-                </div>
-              )}
-
-              <RichText.Content
-                tagName="div"
-                value={item.content}
-                className="repeater-content"
-              />
-            </div>
-          ))}
-        </div>
+        {items.map((item, index) => (
+          <div key={index} className="advantages-item">
+            {item.imageURL && (
+              <img className="advantages-item__icon" src={item.imageURL} alt="alto" />
+            )}
+            <RichText.Content
+              tagName="div"
+              value={item.content}
+              className="advantages-item__content"
+            />
+          </div>
+        ))}
       </div>
+
     </div>
   );
 };

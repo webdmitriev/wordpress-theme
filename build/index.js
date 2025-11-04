@@ -696,14 +696,26 @@ const Edit = ({
     onClick: addItem,
     className: "add-repeater-item"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('+ Добавить элемент', 'theme'))), viewMode === 'production' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "advanced-block-preview"
+    className: "container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "preview-content"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
-    tagName: "h2",
-    value: title,
-    className: "h2"
-  }))))));
+    className: "block-title"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    className: "h2",
+    style: {
+      backgroundImage: `linear-gradient(180deg, ${underlineColor}, ${underlineColor})`
+    }
+  }, title)), items.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: index,
+    className: "advantages-item"
+  }, item.imageURL && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    className: "advantages-item__icon",
+    src: item.imageURL,
+    alt: "alto"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    tagName: "div",
+    value: item.content,
+    className: "advantages-item__content"
+  })))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -800,33 +812,28 @@ const Save = ({
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "repeater-block"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    className: "container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "block-title"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "h2",
     value: title,
-    className: "repeater-title"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "h2-underline",
+    className: "h2",
     style: {
-      width: '100%',
-      height: '8px',
-      backgroundColor: underlineColor
+      backgroundImage: `linear-gradient(180deg, ${underlineColor}, ${underlineColor})`
     }
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "repeater-items"
-  }, items.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), items.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
-    className: "repeater-item"
-  }, item.imageURL && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "repeater-image"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    className: "advantages-item"
+  }, item.imageURL && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    className: "advantages-item__icon",
     src: item.imageURL,
-    alt: ""
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    alt: "alto"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "div",
     value: item.content,
-    className: "repeater-content"
-  }))))));
+    className: "advantages-item__content"
+  })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Save);
 

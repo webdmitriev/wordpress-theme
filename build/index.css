@@ -95,6 +95,68 @@ th {
   text-align: left;
 }
 
+:root {
+  --dark-color: #000000;
+  --white-color: #ffffff;
+  --accent-color: #fe6d35;
+  --black-color: #171717;
+  --gray-color: #808080;
+  --bg-color: #eff1f3;
+  --form-bg: #f0f0f0;
+  --gradient-color: linear-gradient(45deg, #4481eb 0%, #04befe 100%);
+  --underline-intrinsic-width: 8;
+  --underline-width: 12;
+  --underline-color: #fe6d35;
+  --underline-cap-width: 4px;
+  --underline-offset-y: 5px;
+  --underline-padding-x: 0.12em;
+  --container: 1310px;
+  --indent: 10px;
+  --font-family: "Montserrat", sans-serif;
+  --font-weight: 400;
+  --font-size: 16px;
+  --font-height: 1.5;
+}
+
+.theme-button {
+  display: block;
+  width: 100%;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  padding: 6px 24px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  color: #222222;
+  background-color: red;
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+
+.block-title {
+  display: block;
+  width: 100%;
+}
+
+.h2 {
+  position: relative;
+  display: inline;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.4;
+  --underline-width-scale: calc(var(--underline-width) / var(--underline-intrinsic-width));
+  padding: 0 calc(var(--underline-padding-x) + var(--underline-cap-width) * var(--underline-width-scale));
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(180deg, var(--underline-color), var(--underline-color));
+  background-position-x: calc(var(--underline-cap-width) * var(--underline-width-scale)), 0, 100%;
+  background-position-y: calc(100% - var(--underline-offset-y) * -1);
+  background-size: calc(100% - var(--underline-cap-width) * var(--underline-width-scale) * 2) calc(var(--underline-width) * 1px), auto calc(var(--underline-width) * 1px), auto calc(var(--underline-width) * 1px);
+}
+
 .advanced-block-preview {
   position: relative;
   display: flex;
@@ -192,6 +254,7 @@ th {
   align-items: stretch;
   width: 100%;
   padding: 40px 24px;
+  container: mgu-advantages/inline-size;
 }
 .mgu-advantages .repeater-items {
   display: flex;
@@ -281,7 +344,51 @@ th {
   font-size: 14px;
   text-align: center;
 }
+.mgu-advantages .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.mgu-advantages .block-title {
+  margin-bottom: 8px;
+}
+.mgu-advantages .advantages-item {
+  flex: 1 1 calc(33% - 20px);
+  padding: 16px;
+  border-radius: 16px;
+  background-color: var(--white-color);
+}
+.mgu-advantages .advantages-item .advantages-item__icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 8px auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.mgu-advantages .advantages-item .advantages-item__content {
+  text-align: center;
+}
+.mgu-advantages .advantages-item .advantages-item__content strong {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+.mgu-advantages .advantages-item .advantages-item__content strong + br {
+  display: none;
+}
 
+@container mgu-advantages (max-width: 991px) {
+  .mgu-advantages .advantages-item {
+    flex: 1 1 calc(50% - 8px);
+  }
+}
+@container mgu-advantages (max-width: 576px) {
+  .mgu-advantages .advantages-item {
+    flex: 1 1 100%;
+  }
+}
 .development {
   padding: 20px;
   border: 2px dashed #ccc;
@@ -573,6 +680,68 @@ th {
   text-align: left;
 }
 
+:root {
+  --dark-color: #000000;
+  --white-color: #ffffff;
+  --accent-color: #fe6d35;
+  --black-color: #171717;
+  --gray-color: #808080;
+  --bg-color: #eff1f3;
+  --form-bg: #f0f0f0;
+  --gradient-color: linear-gradient(45deg, #4481eb 0%, #04befe 100%);
+  --underline-intrinsic-width: 8;
+  --underline-width: 12;
+  --underline-color: #fe6d35;
+  --underline-cap-width: 4px;
+  --underline-offset-y: 5px;
+  --underline-padding-x: 0.12em;
+  --container: 1310px;
+  --indent: 10px;
+  --font-family: "Montserrat", sans-serif;
+  --font-weight: 400;
+  --font-size: 16px;
+  --font-height: 1.5;
+}
+
+.theme-button {
+  display: block;
+  width: 100%;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  padding: 6px 24px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  color: #222222;
+  background-color: red;
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+
+.block-title {
+  display: block;
+  width: 100%;
+}
+
+.h2 {
+  position: relative;
+  display: inline;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.4;
+  --underline-width-scale: calc(var(--underline-width) / var(--underline-intrinsic-width));
+  padding: 0 calc(var(--underline-padding-x) + var(--underline-cap-width) * var(--underline-width-scale));
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(180deg, var(--underline-color), var(--underline-color));
+  background-position-x: calc(var(--underline-cap-width) * var(--underline-width-scale)), 0, 100%;
+  background-position-y: calc(100% - var(--underline-offset-y) * -1);
+  background-size: calc(100% - var(--underline-cap-width) * var(--underline-width-scale) * 2) calc(var(--underline-width) * 1px), auto calc(var(--underline-width) * 1px), auto calc(var(--underline-width) * 1px);
+}
+
 .advanced-block-preview {
   position: relative;
   display: flex;
@@ -670,6 +839,7 @@ th {
   align-items: stretch;
   width: 100%;
   padding: 40px 24px;
+  container: mgu-advantages/inline-size;
 }
 .mgu-advantages .repeater-items {
   display: flex;
@@ -759,7 +929,51 @@ th {
   font-size: 14px;
   text-align: center;
 }
+.mgu-advantages .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.mgu-advantages .block-title {
+  margin-bottom: 8px;
+}
+.mgu-advantages .advantages-item {
+  flex: 1 1 calc(33% - 20px);
+  padding: 16px;
+  border-radius: 16px;
+  background-color: var(--white-color);
+}
+.mgu-advantages .advantages-item .advantages-item__icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 8px auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.mgu-advantages .advantages-item .advantages-item__content {
+  text-align: center;
+}
+.mgu-advantages .advantages-item .advantages-item__content strong {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+.mgu-advantages .advantages-item .advantages-item__content strong + br {
+  display: none;
+}
 
+@container mgu-advantages (max-width: 991px) {
+  .mgu-advantages .advantages-item {
+    flex: 1 1 calc(50% - 8px);
+  }
+}
+@container mgu-advantages (max-width: 576px) {
+  .mgu-advantages .advantages-item {
+    flex: 1 1 100%;
+  }
+}
 .development {
   padding: 20px;
   border: 2px dashed #ccc;

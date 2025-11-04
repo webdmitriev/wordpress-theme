@@ -240,10 +240,22 @@ const Edit = ({ attributes, setAttributes }) => {
           )}
 
           {viewMode === 'production' && (
-            <div className="advanced-block-preview">
-              <div className="preview-content">
-                <RichText.Content tagName="h2" value={title} className="h2" />
+            <div className="container">
+              <div className="block-title">
+                <h2 className="h2" style={{ backgroundImage: `linear-gradient(180deg, ${underlineColor}, ${underlineColor})` }}>{title}</h2>
               </div>
+              {items.map((item, index) => (
+                <div key={index} className="advantages-item">
+                  {item.imageURL && (
+                    <img className="advantages-item__icon" src={item.imageURL} alt="alto" />
+                  )}
+                  <RichText.Content
+                    tagName="div"
+                    value={item.content}
+                    className="advantages-item__content"
+                  />
+                </div>
+              ))}
             </div>
           )}
         </div>
