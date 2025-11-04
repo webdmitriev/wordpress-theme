@@ -1,4 +1,5 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { RawHTML } from '@wordpress/element';
 
 const Save = ({ attributes }) => {
   const {
@@ -10,7 +11,7 @@ const Save = ({ attributes }) => {
     imageUrl,
     imageAlt,
     responsive,
-    cf7
+    cf7Shortcode
   } = attributes;
 
   const blockProps = useBlockProps.save({
@@ -72,7 +73,7 @@ const Save = ({ attributes }) => {
           )}
 
         </div>
-        {cf7 && <div dangerouslySetInnerHTML={{ __html: cf7 }} />}
+        {cf7Shortcode && <RawHTML>{cf7Shortcode}</RawHTML>}
       </div>
     </main>
   );

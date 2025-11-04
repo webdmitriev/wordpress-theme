@@ -4,7 +4,15 @@ const attributes = {
   subTitleTwo: { type: 'string', default: '' },
   descr: { type: 'string', default: '' },
   divider: { type: 'boolean', default: false },
-  cf7: { type: 'string', default: '' },
+  // cf7: { type: 'string', default: '' },
+  cf7FormId: {
+    type: "string",
+    default: ""
+  },
+  cf7Shortcode: {
+    type: "string",
+    default: ""
+  },
 
   imageId: { type: 'number', default: 0 },
   imageUrl: { type: 'string', default: '' },

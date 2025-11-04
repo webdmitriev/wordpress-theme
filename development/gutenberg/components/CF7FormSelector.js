@@ -56,3 +56,5 @@ const CF7FormSelector = ({ attributes, setAttributes }) => {
     />
   );
 };
+
+export default CF7FormSelector;

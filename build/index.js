@@ -884,9 +884,14 @@ const attributes = {
     type: 'boolean',
     default: false
   },
-  cf7: {
-    type: 'string',
-    default: ''
+  // cf7: { type: 'string', default: '' },
+  cf7FormId: {
+    type: "string",
+    default: ""
+  },
+  cf7Shortcode: {
+    type: "string",
+    default: ""
   },
   imageId: {
     type: 'number',
@@ -1072,11 +1077,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _utils_useOptimizedMedia__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/useOptimizedMedia */ "./development/gutenberg/utils/useOptimizedMedia.js");
-/* harmony import */ var _admin_assets_img_blocks_mgu_main_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../admin/assets/img/blocks/mgu-main.png */ "./admin/assets/img/blocks/mgu-main.png");
-/* harmony import */ var _utils_useAutoLinking__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/useAutoLinking */ "./development/gutenberg/utils/useAutoLinking.js");
-/* harmony import */ var _utils_AutoLinkingPanel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/AutoLinkingPanel */ "./development/gutenberg/utils/AutoLinkingPanel.js");
-/* harmony import */ var _controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./controls/VideoHelpPanel */ "./development/gutenberg/blocks/mgu-main/controls/VideoHelpPanel.js");
-/* harmony import */ var _controls_ContentPanel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./controls/ContentPanel */ "./development/gutenberg/blocks/mgu-main/controls/ContentPanel.js");
+/* harmony import */ var _components_CF7FormSelector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/CF7FormSelector */ "./development/gutenberg/components/CF7FormSelector.js");
+/* harmony import */ var _admin_assets_img_blocks_mgu_main_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../admin/assets/img/blocks/mgu-main.png */ "./admin/assets/img/blocks/mgu-main.png");
+/* harmony import */ var _utils_useAutoLinking__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/useAutoLinking */ "./development/gutenberg/utils/useAutoLinking.js");
+/* harmony import */ var _utils_AutoLinkingPanel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/AutoLinkingPanel */ "./development/gutenberg/utils/AutoLinkingPanel.js");
+/* harmony import */ var _controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./controls/VideoHelpPanel */ "./development/gutenberg/blocks/mgu-main/controls/VideoHelpPanel.js");
+/* harmony import */ var _controls_ContentPanel__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./controls/ContentPanel */ "./development/gutenberg/blocks/mgu-main/controls/ContentPanel.js");
+
 
 
 
@@ -1101,7 +1108,8 @@ const Edit = ({
     imageUrl,
     imageWebp,
     imageId,
-    cf7
+    cf7FormId,
+    cf7Shortcode
   } = attributes;
   const [viewMode, setViewMode] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)('preview'); // 'preview' | 'edit' | 'production'
 
@@ -1113,7 +1121,7 @@ const Edit = ({
   const {
     autoLinkContent,
     postsCount
-  } = (0,_utils_useAutoLinking__WEBPACK_IMPORTED_MODULE_7__.useAutoLinking)();
+  } = (0,_utils_useAutoLinking__WEBPACK_IMPORTED_MODULE_8__.useAutoLinking)();
 
   // Обработчик авто-линкинга
   const handleAutoLink = () => {
@@ -1129,10 +1137,10 @@ const Edit = ({
     imageWebp: '',
     imageId: 0
   });
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_9__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_ContentPanel__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_10__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_ContentPanel__WEBPACK_IMPORTED_MODULE_11__["default"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_AutoLinkingPanel__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_AutoLinkingPanel__WEBPACK_IMPORTED_MODULE_9__["default"], {
     onAutoLink: handleAutoLink,
     postsCount: postsCount,
     disabled: postsCount === 0
@@ -1164,7 +1172,7 @@ const Edit = ({
     }],
     onChange: value => setViewMode(value)
   })), viewMode === 'preview' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: _admin_assets_img_blocks_mgu_main_png__WEBPACK_IMPORTED_MODULE_6__,
+    src: _admin_assets_img_blocks_mgu_main_png__WEBPACK_IMPORTED_MODULE_7__,
     className: "preview-image",
     alt: "",
     style: {
@@ -1277,15 +1285,9 @@ const Edit = ({
     allowedFormats: ['core/bold', 'core/italic', 'core/link', 'core/underline', 'core/text-color']
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "rich-text"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextareaControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Контактная форма', 'theme'),
-    value: cf7,
-    onChange: value => setAttributes({
-      cf7: value
-    }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('[contact-form-7 id="123" title="Contact form"]', 'theme'),
-    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Вставьте шорткод формы Contact Form 7', 'theme'),
-    rows: 1
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_CF7FormSelector__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    attributes: attributes,
+    setAttributes: setAttributes
   }))), viewMode === 'production' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block-preview"
   }, imageUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("picture", null, imageWebp && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
@@ -1321,8 +1323,11 @@ const Edit = ({
     value: descr,
     className: "descr"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wpcf7"
-  }, "Contact Form")))));
+    className: "wpcf7",
+    dangerouslySetInnerHTML: {
+      __html: cf7Shortcode
+    }
+  })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -1396,6 +1401,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 const Save = ({
@@ -1410,7 +1418,7 @@ const Save = ({
     imageUrl,
     imageAlt,
     responsive,
-    cf7
+    cf7Shortcode
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: `mgu-main`
@@ -1451,11 +1459,7 @@ const Save = ({
     tagName: "p",
     className: "descr",
     value: descr
-  })), cf7 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    dangerouslySetInnerHTML: {
-      __html: cf7
-    }
-  })));
+  })), cf7Shortcode && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.RawHTML, null, cf7Shortcode)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Save);
 
@@ -1471,6 +1475,85 @@ const Save = ({
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ "./development/gutenberg/components/CF7FormSelector.js":
+/*!*************************************************************!*\
+  !*** ./development/gutenberg/components/CF7FormSelector.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+const CF7FormSelector = ({
+  attributes,
+  setAttributes
+}) => {
+  const {
+    cf7FormId
+  } = attributes;
+  const {
+    forms,
+    isLoading
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
+    const formsData = select('core').getEntityRecords('postType', 'wpcf7_contact_form', {
+      per_page: -1,
+      status: 'publish'
+    });
+    return {
+      forms: formsData,
+      isLoading: !formsData
+    };
+  }, []);
+
+  // Формируем опции
+  const formOptions = forms ? forms.map(form => ({
+    label: form.title.rendered,
+    value: form.id
+  })) : [];
+  formOptions.unshift({
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('-- Выберите форму --', 'theme'),
+    value: ''
+  });
+  if (isLoading) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        marginBottom: '8px'
+      }
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Загрузка форм...', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Spinner, null));
+  }
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Контактная форма CF7', 'theme'),
+    value: cf7FormId,
+    options: formOptions,
+    onChange: formId => {
+      const selectedForm = forms.find(form => form.id === parseInt(formId));
+      const shortcode = selectedForm ? `[contact-form-7 id="${selectedForm.id}" title="${selectedForm.title.rendered}"]` : '';
+      setAttributes({
+        cf7FormId: formId,
+        cf7Shortcode: shortcode
+      });
+    },
+    help: cf7FormId ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Форма выбрана', 'theme') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Выберите форму из списка', 'theme')
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CF7FormSelector);
 
 /***/ }),
 

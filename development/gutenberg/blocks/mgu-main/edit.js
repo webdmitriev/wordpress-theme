@@ -10,6 +10,7 @@ import { Button, ToggleControl, RadioControl, TextareaControl } from '@wordpress
 import { __ } from '@wordpress/i18n';
 
 import { useOptimizedMedia } from '../../utils/useOptimizedMedia';
+import CF7FormSelector from '../../components/CF7FormSelector';
 import mainBlockImg from '../../../../admin/assets/img/blocks/mgu-main.png';
 
 import { useAutoLinking } from '../../utils/useAutoLinking';
@@ -27,7 +28,8 @@ const Edit = ({ attributes, setAttributes }) => {
     imageUrl,
     imageWebp,
     imageId,
-    cf7
+    cf7FormId,
+    cf7Shortcode
   } = attributes;
 
   const [viewMode, setViewMode] = useState('preview'); // 'preview' | 'edit' | 'production'
@@ -162,14 +164,7 @@ const Edit = ({ attributes, setAttributes }) => {
                 </div>
               </div>
               <div className="rich-text">
-                <TextareaControl
-                  label={__('Контактная форма', 'theme')}
-                  value={cf7}
-                  onChange={(value) => setAttributes({ cf7: value })}
-                  placeholder={__('[contact-form-7 id="123" title="Contact form"]', 'theme')}
-                  help={__('Вставьте шорткод формы Contact Form 7', 'theme')}
-                  rows={1}
-                />
+                <CF7FormSelector attributes={attributes} setAttributes={setAttributes} />
               </div>
             </div>
           )}
@@ -200,9 +195,7 @@ const Edit = ({ attributes, setAttributes }) => {
                 <RichText.Content tagName="p" value={subTitleTwo} className="sub_title" />
                 <RichText.Content tagName="p" value={descr} className="descr" />
               </div>
-              <div className="wpcf7">
-                Contact Form
-              </div>
+              <div className="wpcf7" dangerouslySetInnerHTML={{ __html: cf7Shortcode }} />
             </div>
           )}
         </div>
