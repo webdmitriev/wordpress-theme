@@ -21,7 +21,7 @@ function theme_blocks_assets() {
   // Регистрируем стили редактора
   wp_register_style(
     'theme-blocks-editor',
-    get_template_directory_uri() . '/build/index.css',
+    get_template_directory_uri() . '/admin/assets/css-js/admin-index.css',
     array('wp-edit-blocks'),
     '1.0.0'
   );

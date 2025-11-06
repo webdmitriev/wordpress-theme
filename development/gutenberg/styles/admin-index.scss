@@ -1,9 +1,9 @@
 // Главный файл стилей
-@import "./admin/reset";
-@import "./admin/global";
-@import "./admin/h2";
-@import "./blocks/mgu-main";
-@import "./blocks/mgu-advantages";
+@use "./admin/reset";
+@use "./admin/global";
+@use "./admin/h2";
+@use "./blocks/mgu-main";
+@use "./blocks/mgu-advantages";
 
 .development {
   padding: 20px;

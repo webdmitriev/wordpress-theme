@@ -8,6 +8,7 @@
     "start": "wp-scripts start development/gutenberg/index.js --output-path=build",
     "dev": "wp-scripts start development/gutenberg/index.js --output-path=build",
     "scss": "sass development/scss:assets/css-js --no-source-map --style=compressed",
+    "scss-admin": "sass development/gutenberg/styles:admin/assets/css-js --watch --no-source-map --style=compressed",
     "scss:watch": "sass development/scss:assets/css-js --watch --no-source-map --style=compressed",
     "js": "node build-js.js",
     "js:watch": "nodemon --watch development/js --ext js --exec \"npm run js\"",
