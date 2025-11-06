@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const srcDir = path.join(__dirname, "development/js");
+const srcDir = path.join(__dirname, "development/frontend/js");
 const distDir = path.join(__dirname, "assets/css-js");
 
 // Создаём папку назначения, если её нет

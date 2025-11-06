@@ -23,104 +23,6 @@ module.exports = __webpack_require__.p + "images/mgu-main.67f84f9d.png";
 
 /***/ }),
 
-/***/ "./development/extends/spacer-bg.js":
-/*!******************************************!*\
-  !*** ./development/extends/spacer-bg.js ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
-/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _gutenberg_utils_default_colors_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../gutenberg/utils/default-colors.js */ "./development/gutenberg/utils/default-colors.js");
-
-
-
-
-
-
-
-// === 1. Добавляем новое свойство в блок ===
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.registerBlockType', 'theme/extend-spacer-bg', (settings, name) => {
-  if (name !== 'core/spacer') {
-    return settings;
-  }
-
-  // добавляем атрибут backgroundColor
-  return {
-    ...settings,
-    attributes: {
-      ...settings.attributes,
-      backgroundColor: {
-        type: 'string',
-        default: ''
-      }
-    }
-  };
-});
-
-// === 2. Добавляем панель выбора цвета ===
-const withBackgroundColorControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.createHigherOrderComponent)(BlockEdit => {
-  return props => {
-    if (props.name !== 'core/spacer') return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, {
-      ...props
-    });
-    const {
-      attributes,
-      setAttributes,
-      className
-    } = props;
-    const {
-      backgroundColor
-    } = attributes;
-
-    // новый стиль для визуализации цвета прямо в редакторе
-    const blockStyle = backgroundColor ? {
-      backgroundColor
-    } : {};
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', 'theme'),
-      colorSettings: [{
-        value: backgroundColor,
-        onChange: color => setAttributes({
-          backgroundColor: color
-        }),
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', 'theme'),
-        colors: _gutenberg_utils_default_colors_js__WEBPACK_IMPORTED_MODULE_5__["default"]
-      }]
-    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: className,
-      style: blockStyle
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, {
-      ...props
-    })));
-  };
-}, 'withBackgroundColorControl');
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('editor.BlockEdit', 'theme/with-background-color-control', withBackgroundColorControl);
-
-// === 3. Добавляем inline-стиль при сохранении ===
-const addBackgroundColorExtraProps = (saveElementProps, blockType, attributes) => {
-  if (blockType.name === 'core/spacer' && attributes.backgroundColor) {
-    saveElementProps.style = {
-      ...saveElementProps.style,
-      backgroundColor: attributes.backgroundColor
-    };
-  }
-  return saveElementProps;
-};
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.getSaveContent.extraProps', 'theme/add-background-color-extra-props', addBackgroundColorExtraProps);
-
-/***/ }),
-
 /***/ "./development/gutenberg/blocks/mgu-advantages/attributes.js":
 /*!*******************************************************************!*\
   !*** ./development/gutenberg/blocks/mgu-advantages/attributes.js ***!
@@ -1497,6 +1399,104 @@ const CF7FormSelector = ({
 
 /***/ }),
 
+/***/ "./development/gutenberg/extends/spacer-bg.js":
+/*!****************************************************!*\
+  !*** ./development/gutenberg/extends/spacer-bg.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_default_colors_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/default-colors.js */ "./development/gutenberg/utils/default-colors.js");
+
+
+
+
+
+
+
+// === 1. Добавляем новое свойство в блок ===
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.registerBlockType', 'theme/extend-spacer-bg', (settings, name) => {
+  if (name !== 'core/spacer') {
+    return settings;
+  }
+
+  // добавляем атрибут backgroundColor
+  return {
+    ...settings,
+    attributes: {
+      ...settings.attributes,
+      backgroundColor: {
+        type: 'string',
+        default: ''
+      }
+    }
+  };
+});
+
+// === 2. Добавляем панель выбора цвета ===
+const withBackgroundColorControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.createHigherOrderComponent)(BlockEdit => {
+  return props => {
+    if (props.name !== 'core/spacer') return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, {
+      ...props
+    });
+    const {
+      attributes,
+      setAttributes,
+      className
+    } = props;
+    const {
+      backgroundColor
+    } = attributes;
+
+    // новый стиль для визуализации цвета прямо в редакторе
+    const blockStyle = backgroundColor ? {
+      backgroundColor
+    } : {};
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', 'theme'),
+      colorSettings: [{
+        value: backgroundColor,
+        onChange: color => setAttributes({
+          backgroundColor: color
+        }),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', 'theme'),
+        colors: _utils_default_colors_js__WEBPACK_IMPORTED_MODULE_5__["default"]
+      }]
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: className,
+      style: blockStyle
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, {
+      ...props
+    })));
+  };
+}, 'withBackgroundColorControl');
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('editor.BlockEdit', 'theme/with-background-color-control', withBackgroundColorControl);
+
+// === 3. Добавляем inline-стиль при сохранении ===
+const addBackgroundColorExtraProps = (saveElementProps, blockType, attributes) => {
+  if (blockType.name === 'core/spacer' && attributes.backgroundColor) {
+    saveElementProps.style = {
+      ...saveElementProps.style,
+      backgroundColor: attributes.backgroundColor
+    };
+  }
+  return saveElementProps;
+};
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.getSaveContent.extraProps', 'theme/add-background-color-extra-props', addBackgroundColorExtraProps);
+
+/***/ }),
+
 /***/ "./development/gutenberg/formats/li-format.js":
 /*!****************************************************!*\
   !*** ./development/gutenberg/formats/li-format.js ***!
@@ -2358,7 +2358,7 @@ var __webpack_exports__ = {};
   \****************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _seo_panel_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./seo-panel.js */ "./development/gutenberg/seo-panel.js");
-/* harmony import */ var _extends_spacer_bg_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../extends/spacer-bg.js */ "./development/extends/spacer-bg.js");
+/* harmony import */ var _extends_spacer_bg_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./extends/spacer-bg.js */ "./development/gutenberg/extends/spacer-bg.js");
 /* harmony import */ var _formats_li_format_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./formats/li-format.js */ "./development/gutenberg/formats/li-format.js");
 /* harmony import */ var _formats_li_format_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_formats_li_format_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _blocks_mgu_main_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks/mgu-main/index.js */ "./development/gutenberg/blocks/mgu-main/index.js");

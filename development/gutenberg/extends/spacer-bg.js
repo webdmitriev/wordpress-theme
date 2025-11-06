@@ -2,7 +2,7 @@ import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 import { PanelColorSettings, InspectorControls } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import colors from '../gutenberg/utils/default-colors.js';
+import colors from '../utils/default-colors.js';
 
 // === 1. Добавляем новое свойство в блок ===
 addFilter(

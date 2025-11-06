@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const chokidar = require('chokidar');
 
-const inputDir = 'development/img';
+const inputDir = 'development/frontend/img';
 const outputDir = 'assets/img';
 
 // Функция для сжатия одного файла

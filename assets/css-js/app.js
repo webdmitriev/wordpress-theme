@@ -8,5 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   $(".header").on("click", ".burger", function () {
     $(this).toggleClass("active")
   })
+
+  console.log('Oleg!');
 })
 

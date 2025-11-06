@@ -2,7 +2,7 @@
 import './seo-panel.js';
 
 // ext blocks
-import '../extends/spacer-bg.js';
+import './extends/spacer-bg.js';
 
 // add components
 import './formats/li-format.js';
