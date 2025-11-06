@@ -3,9 +3,6 @@ import edit from './edit';
 import save from './save';
 import attributes from './attributes';
 
-import './editor.scss';
-import './style.scss';
-
 registerBlockType('theme/main-block', {
   title: 'Main block',
   category: 'landing',

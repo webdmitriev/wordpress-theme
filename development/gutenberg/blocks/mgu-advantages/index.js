@@ -4,9 +4,6 @@ import edit from './edit';
 import save from './save';
 import attributes from './attributes';
 
-import './editor.scss';
-import './style.scss';
-
 registerBlockType('theme/mgu-advantages', {
   title: __('Преимущества', 'theme'),
   category: 'landing',
