@@ -24,6 +24,15 @@ function theme_settings_menu() {
 
   add_submenu_page(
     'theme-settings',
+    'Add to head',
+    'Head',
+    'manage_options',
+    'theme-head',
+    'theme_head_page_content'
+  );
+
+  add_submenu_page(
+    'theme-settings',
     'Video Instructions',
     'Video Instructions',
     'manage_options',
